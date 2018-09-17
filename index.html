@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>2018 Jog-A-Thon | Our Lady of Sorrows Academy</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.css"
+        integrity="sha256-CNwnGWPO03a1kOlAsGaH5g8P3dFaqFqqGFV/1nkX5OU=" crossorigin="anonymous" />
+</head>
+
+<body>
+
+    <header>
+        <div class="collapse bg-dark" id="navbarHeader">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8 col-md-7 py-4">
+                        <p class="text-muted">Thank you for your donation to</p>
+                        <h4 class="text-white">Our Lady of Sorrows Academy</h4>
+                        <p class="text-muted">
+                            Our Lady of Sorrows Academy is holding its Ninth Annual Jog-A-Thon on November 21, 2018,
+                            our major fundraiser for this Academic Year. Our goal is to raise $35,000 and we are
+                            relying on your generous support and prayers to succeed!
+                        </p>
+                        <p class="text-muted">
+                            All proceeds from this year’s Jog-A-Thon will benefit the Academy, and will be used to
+                            fund, among other expenses, replacement of broken and outdated sports equipment, and
+                            modernization of several classrooms.
+                        </p>
+                        <p class="text-muted">
+
+                            In the weeks preceding the day of the Jog-A-Thon, students obtain sponsors to make a per
+                            lap pledge or a one-time donation. On the day of the event, participants will have one hour
+                            to run, jog, or walk as many times as they can around a one-eighth mile track.
+                        </p>
+                        <p class="text-muted">
+
+                            Prizes will be awarded for students who run the most number of laps, as well as for
+                            students who collect the most amount of money. Additional incentive prizes are awarded
+                            throughout the campaign.
+                        </p>
+                        <p class="text-muted">
+
+                            Please sponsor our students, teachers, and religious! Select the name(s) of who you are
+                            graciously sponsoring, then enter the amount of your donation, your contact information and
+                            payment information.
+                        </p>
+                        <p class="text-muted">
+
+                            Thank you for supporting our school!
+                        </p>
+                        <p class="text-muted small">
+
+                            Our Lady of Sorrows Academy is a K-12 private traditional Catholic school located in
+                            Phoenix, Arizona. The Academy is a 501(c)(3) not-for-profit IRS tax exempt entity and
+                            donations may be fully tax-deductible according to IRS charitable contributions guidelines.
+                            All donations that meet IRS limits will be followed up with a letter of acknowledgement as
+                            mandated by the IRS.
+                        </p>
+                    </div>
+                    <div class="col-sm-4 offset-md-1 py-4">
+                        <h4 class="text-white">Contact</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="text-white">Email</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="navbar navbar-dark bg-dark box-shadow">
+            <div class="container d-flex justify-content-between">
+                <a href="#" class="navbar-brand d-flex align-items-center">
+                    <span class="oi oi-dashboard"></span>&nbsp;<strong>Fundraising Event Donations</strong>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader"
+                    aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="oi oi-caret-bottom"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+
+
+
+    <!-- App -->
+    <main id="app" role="main">
+
+        <section class="jumbotron bg-white text-center">
+            <div class="container">
+                <img src="OLOSA_logo.png" class="rounded float-left" alt="...">
+                <h1 class="jumbotron-heading">2018 Jog-A-Thon</h1>
+                <h4 class="text-secondary">Our Lady of Sorrows Academy</h4>
+                <p class="lead text-muted">Please donate to the 2018 Jog-A-Thon by selecting the names of students you
+                    want to associate your donation with first. Once you select the names and amount, select the DONATE
+                    payment
+                    button to enter your credit card information on the next page.
+                </p>
+                <template v-if="progress.amount > 0">
+                    <p>
+                        <div class="progress" style="height:48px;">
+                            <div v-bind:style="progressStyle" class="progress-bar progress-bar-striped progress-bar-animated bg-danger"
+                                role="progressbar">{{progressDisplay}}</div>
+                            <div v-if="false" v-bind:style="progressoverStyle" class="progress-bar progress-bar-striped bg-success"
+                                role="progressbar">{{progressoverDisplay}}</div>
+                        </div>
+                        Goal: ${{progress.goal.toLocaleString()}}
+                    </p>
+                </template>
+                <div v-show="studentList && amountTotal && amountValid">
+                    <p>
+                        <a v-bind:href="url" class="btn btn-lg btn-success my-2">DONATE</a>
+                    </p>
+                    <p>You are making a one time donatiion totaling ${{amountTotal.toLocaleString()}}. The amount will
+                        sponsor the
+                        following:</p>
+                    <p class="lead">{{studentList}}</p>
+                </div>
+                <div v-show="!studentList || !amountTotal || !amountValid">
+                    <p>
+                        <a href="" class="btn btn-lg btn-success my-2 disabled">DONATE</a>
+                    </p>
+                    <p class="text-danger">
+                        The form is not complete. Please add at least one
+                        name and amount.
+                    </p>
+                    <p class="lead">Your selected students list is empty.</p>
+                </div>
+                <hr class="my-4">
+                <div class="jumbotron-footer">
+                    <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/cc-badges-ppmcvdam.png" alt="Donate now with PayPal" />
+                </div>
+            </div>
+        </section>
+
+        <div class="album py-5 bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-auto">
+                        <p>Please fill out the following form to donate. Thank you!</p>
+                    </div>
+                </div>
+                <div class="form-row align-items-center mb-2">
+                    <div class="col-auto">
+                        <label class="sr-only" for="inlineFormInputGroup">Search</label>
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><span class="oi oi-magnifying-glass"></span></div>
+                            </div>
+                            <input v-model="query" type="text" class="form-control" id="inlineFormInputGroup"
+                                aria-describedby="searchHelp" placeholder="Search">
+                            <div class="input-group-append">
+                                <button v-on:click="reset()" type="button" class="btn btn-outline-secondary input-group-text">
+                                    <span class="oi oi-x"></span></button>
+                            </div>
+                        </div>
+                        <small id="searchHelp" class="form-text text-muted"><span class="oi oi-info"></span> To quickly
+                            located a student, type a name or grade. To quickly locate priests or faculty, type
+                            'faculty'.</small>
+                    </div>
+                </div>
+                <div class="row">
+
+
+                    <!--begin card template-->
+                    <div v-for="student in studentsFiltered" class="col-md-4">
+                        <div class="card mb-4 box-shadow">
+
+                            <img class="card-img-top" v-if="student.image" v-bind:src="student.image" :alt="fullname(student)">
+                            <ul class="list-group list-group-flush">
+                                <li v-bind:class="cardClass(student)" class="list-group-item">{{fullname(student)}}</li>
+                            </ul>
+                            <div class="card-body">
+                                <div v-show="student.selected" class="card-text">
+                                    <div class="form-check-inline">
+                                        <label class="form-check-label">
+                                            <input v-model.number="student.amount" v-bind:name="student.order" type="radio"
+                                                class="form-check-input" value="25">$25
+                                        </label>
+                                    </div>
+                                    <div class="form-check-inline">
+                                        <label class="form-check-label">
+                                            <input v-model.number="student.amount" v-bind:name="student.order" type="radio"
+                                                class="form-check-input" value="50">$50
+                                        </label>
+                                    </div>
+                                    <div class="form-check-inline">
+                                        <label class="form-check-label">
+                                            <input v-model.number="student.amount" v-bind:name="student.order" type="radio"
+                                                class="form-check-input" value="100">$100
+                                        </label>
+                                    </div>
+                                    <div class="input-group mb-2">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">$</div>
+                                        </div>
+                                        <input v-model.number="student.amount" type="number" class="form-control" value=""
+                                            min="1" placeholder="Other amount">
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group" :title="(student.selected ? 'Remove ' : 'Add ') + student.firstname + (student.selected ? ' from donation list' : ' to donation list')">
+                                        <button v-on:click="select(student)" type="button" class="btn btn-sm btn-outline-secondary">{{student.selected
+                                            ? 'Remove' : 'Add'}}</button>
+                                    </div>
+                                    <small class="text-muted">{{student.grade}}</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end card template-->
+
+
+
+                    <!--end row-->
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="text-muted">
+        <div class="container">
+            <p class="float-right">
+                <a href="#">Back to top</a>
+            </p>
+            <p>2018 &copy;</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- production version, optimized for size and speed -->
+    <!--script src="https://cdn.jsdelivr.net/npm/vue"></script-->
+    <script src="./urls.js"></script>
+    <script src="./students.js"></script>
+    <script src="./progress.js"></script>
+    <script src="./index.js"></script>
+</body>
+
+</html>
