@@ -2,14 +2,15 @@
 var app = new Vue({
     el: '#app',
     data: () => ({
+        students: window.students,
         urls: window.urls,
-        query: null,
         progress: window.progress,
-        students: window.students
+        query: null,
+        isDirty: false
     }),
     methods: {
-        reset: function () { 
-            this.query = null; 
+        reset: function () {
+            this.query = null;
         },
         cardClass: function (student) {
             return {
@@ -22,7 +23,10 @@ var app = new Vue({
         fullname: function (student) {
             return student.title + ' ' + student.firstname + ' ' + student.lastname;
         },
-        select: student => student.selected = !student.selected
+        select: function (student) {
+            this.isDirty = true;
+            student.selected = !student.selected;
+        }
     },
     computed: {
         progressDisplay: function () {
@@ -33,12 +37,12 @@ var app = new Vue({
             return '$' + progressover.toLocaleString();
         },
         progressStyle: function () {
-            var width = Math.floor((this.progress.amount / this.progress.goal) * 100); 
+            var width = Math.floor((this.progress.amount / this.progress.goal) * 100);
             return { width: width + '%'};
         },
         progressoverStyle: function () {
             var amountover = this.progress.goal - this.progress.amount;
-            var width = (amountover / (this.progress.max - this.progress.goal) * 100) * .25; 
+            var width = (amountover / (this.progress.max - this.progress.goal) * 100) * .25;
             return { width: width + '%'};
         },
         amountValid: function () {
@@ -54,8 +58,8 @@ var app = new Vue({
         studentList: function () {
             var selected = this.students.filter(student => student.selected);
             if (selected.length > 0) {
-                var names = selected.map(student => 
-                    student.amount 
+                var names = selected.map(student =>
+                    student.amount && student.amount
                         ? student.title + ' ' + student.firstname + ' ' + student.lastname + ' ($' + student.amount.toLocaleString() + ')'
                         : ''
                     );
@@ -67,8 +71,8 @@ var app = new Vue({
             return [
                 this.urls.paypalBase,
                 "?cmd=", "_donations",
-                "&business=", "chris@taleck.com", // TODO change to business account
-                "&item_name=", "OLOS+Academy+2018+Jog-a-thon",
+                "&business=", this.urls.paypalEmail,
+                "&item_name=", this.urls.paypalItem,
                 "&item_number=", encodeURI(this.studentList),
                 "&amount=", this.amountTotal,
                 "&currency_code=", "USD"

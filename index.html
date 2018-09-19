@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 
 <head>
@@ -69,7 +69,7 @@
                     <div class="col-sm-4 offset-md-1 py-4">
                         <h4 class="text-white">Contact</h4>
                         <ul class="list-unstyled">
-                            <li><a href="#" class="text-white">Email</a></li>
+                            <li>E-mail:<a href="mailto:office@olosa.org" class="text-white">office@olosa.org</a></li>
                         </ul>
                     </div>
                 </div>
@@ -78,7 +78,7 @@
         <div class="navbar navbar-dark bg-dark box-shadow">
             <div class="container d-flex justify-content-between">
                 <a href="#" class="navbar-brand d-flex align-items-center">
-                    <span class="oi oi-dashboard"></span>&nbsp;<strong>Fundraising Event Donations</strong>
+                    <span class="oi oi-dashboard"></span>&nbsp;<strong>Fundraising Donations</strong>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader"
                     aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
@@ -90,27 +90,28 @@
 
 
 
-
     <!-- App -->
     <main id="app" role="main">
-
+        <img src="olosa_fall_2018_mobile.jpg" class="img-fluid mx-auto d-block d-md-none" alt="OLOSA Class 2018">
+        <img src="olosa_fall_2018_med.jpg" class="img-fluid mx-auto d-none d-md-block" alt="OLOSA Class 2018">
         <section class="jumbotron bg-white text-center">
             <div class="container">
-                <img src="OLOSA_logo.png" class="rounded float-left" alt="...">
+                <img src="OLOSA_logo.png" class="float-md-left" alt="Our Lady of Sorrows Academy logo">
                 <h1 class="jumbotron-heading">2018 Jog-A-Thon</h1>
                 <h4 class="text-secondary">Our Lady of Sorrows Academy</h4>
-                <p class="lead text-muted">Please donate to the 2018 Jog-A-Thon by selecting the names of students you
-                    want to associate your donation with first. Once you select the names and amount, select the DONATE
-                    payment
+                <p class="lead text-muted">
+                    Please donate to the 2018 Jog-A-Thon by adding the names of students, priests &amp; faculty you
+                    want to associate your donation with first. Once you add the names and amount,
+                    select the green DONATE payment
                     button to enter your credit card information on the next page.
                 </p>
                 <template v-if="progress.amount > 0">
                     <p>
                         <div class="progress" style="height:48px;">
                             <div v-bind:style="progressStyle" class="progress-bar progress-bar-striped progress-bar-animated bg-danger"
-                                role="progressbar">{{progressDisplay}}</div>
+                                 role="progressbar">{{progressDisplay}}</div>
                             <div v-if="false" v-bind:style="progressoverStyle" class="progress-bar progress-bar-striped bg-success"
-                                role="progressbar">{{progressoverDisplay}}</div>
+                                 role="progressbar">{{progressoverDisplay}}</div>
                         </div>
                         Goal: ${{progress.goal.toLocaleString()}}
                     </p>
@@ -119,16 +120,17 @@
                     <p>
                         <a v-bind:href="url" class="btn btn-lg btn-success my-2">DONATE</a>
                     </p>
-                    <p>You are making a one time donatiion totaling ${{amountTotal.toLocaleString()}}. The amount will
-                        sponsor the
-                        following:</p>
+                    <p>
+                        You are making a one-time donation totaling ${{amountTotal.toLocaleString()}}. The amount will
+                        sponsor the following:
+                    </p>
                     <p class="lead">{{studentList}}</p>
                 </div>
                 <div v-show="!studentList || !amountTotal || !amountValid">
                     <p>
                         <a href="" class="btn btn-lg btn-success my-2 disabled">DONATE</a>
                     </p>
-                    <p class="text-danger">
+                    <p v-if="isDirty" class="text-danger">
                         The form is not complete. Please add at least one
                         name and amount.
                     </p>
@@ -136,7 +138,8 @@
                 </div>
                 <hr class="my-4">
                 <div class="jumbotron-footer">
-                    <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/cc-badges-ppmcvdam.png" alt="Donate now with PayPal" />
+                    <p class="img-fluid"><img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/cc-badges-ppmcvdam.png" alt="Donate now with PayPal" class="img-fluid" /></p>
+                    <p v-if="urls.paypalEmailVerifyHref" class="small">Payments to: {{urls.paypalEmail}} <a v-bind:href="urls.paypalEmailVerifyHref">Verify</a></p>
                 </div>
             </div>
         </section>
@@ -144,27 +147,30 @@
         <div class="album py-5 bg-light">
             <div class="container">
                 <div class="row">
-                    <div class="col-auto">
+                    <div class="col-12">
                         <p>Please fill out the following form to donate. Thank you!</p>
                     </div>
                 </div>
                 <div class="form-row align-items-center mb-2">
-                    <div class="col-auto">
+                    <div class="col-12">
                         <label class="sr-only" for="inlineFormInputGroup">Search</label>
                         <div class="input-group mb-2">
                             <div class="input-group-prepend">
                                 <div class="input-group-text"><span class="oi oi-magnifying-glass"></span></div>
                             </div>
                             <input v-model="query" type="text" class="form-control" id="inlineFormInputGroup"
-                                aria-describedby="searchHelp" placeholder="Search">
+                                   aria-describedby="searchHelp" placeholder="Search">
                             <div class="input-group-append">
                                 <button v-on:click="reset()" type="button" class="btn btn-outline-secondary input-group-text">
-                                    <span class="oi oi-x"></span></button>
+                                    <span class="oi oi-x"></span>
+                                </button>
                             </div>
                         </div>
-                        <small id="searchHelp" class="form-text text-muted"><span class="oi oi-info"></span> To quickly
-                            located a student, type a name or grade. To quickly locate priests or faculty, type
-                            'faculty'.</small>
+                        <small id="searchHelp" class="form-text text-muted">
+                            <span class="oi oi-info"></span> To quickly
+                            locate a student, type a name or grade. To quickly locate priests or faculty, type
+                            'faculty'.
+                        </small>
                     </div>
                 </div>
                 <div class="row">
@@ -183,19 +189,19 @@
                                     <div class="form-check-inline">
                                         <label class="form-check-label">
                                             <input v-model.number="student.amount" v-bind:name="student.order" type="radio"
-                                                class="form-check-input" value="25">$25
+                                                   class="form-check-input" value="25">$25
                                         </label>
                                     </div>
                                     <div class="form-check-inline">
                                         <label class="form-check-label">
                                             <input v-model.number="student.amount" v-bind:name="student.order" type="radio"
-                                                class="form-check-input" value="50">$50
+                                                   class="form-check-input" value="50">$50
                                         </label>
                                     </div>
                                     <div class="form-check-inline">
                                         <label class="form-check-label">
                                             <input v-model.number="student.amount" v-bind:name="student.order" type="radio"
-                                                class="form-check-input" value="100">$100
+                                                   class="form-check-input" value="100">$100
                                         </label>
                                     </div>
                                     <div class="input-group mb-2">
@@ -203,13 +209,17 @@
                                             <div class="input-group-text">$</div>
                                         </div>
                                         <input v-model.number="student.amount" type="number" class="form-control" value=""
-                                            min="1" placeholder="Other amount">
+                                               min="1" placeholder="Other amount">
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group" :title="(student.selected ? 'Remove ' : 'Add ') + student.firstname + (student.selected ? ' from donation list' : ' to donation list')">
-                                        <button v-on:click="select(student)" type="button" class="btn btn-sm btn-outline-secondary">{{student.selected
-                                            ? 'Remove' : 'Add'}}</button>
+                                        <button v-on:click="select(student)" type="button" class="btn btn-sm btn-outline-secondary">
+                                            {{
+student.selected
+                                            ? 'Remove' : 'Add'
+                                            }}
+                                        </button>
                                     </div>
                                     <small class="text-muted">{{student.grade}}</small>
                                 </div>
@@ -217,9 +227,6 @@
                         </div>
                     </div>
                     <!--end card template-->
-
-
-
                     <!--end row-->
                 </div>
             </div>
