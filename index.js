@@ -72,8 +72,8 @@ var app = new Vue({
                 this.urls.paypalBase,
                 "?cmd=", "_donations",
                 "&business=", this.urls.paypalEmail,
-                "&item_name=", this.urls.paypalItem,
-                "&item_number=", encodeURI(this.studentList),
+                "&item_name=", encodeURI(this.studentList),
+                "&item_number=", this.urls.paypalItem,
                 "&amount=", this.amountTotal,
                 "&currency_code=", "USD"
             ].join("")
