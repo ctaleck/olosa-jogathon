@@ -12,7 +12,7 @@ var app = new Vue({
         reset: function () {
              if (appInsights) {
                 appInsights.trackEvent
-                  ('ResetClick',
+                  ('DonateAppClickReset',
                      // String properties:
                      { Query: this.query },
                      // Numeric metrics:
@@ -36,14 +36,14 @@ var app = new Vue({
             this.isDirty = true;
             student.selected = !student.selected;
             if (appInsights) {
-                var event = student.selected ? 'NameAdded' : 'NameRemoved';
-                appInsights.trackEvent(event, { Name: this.fullname }, { });
+                var event = student.selected ? 'DonateAppNameAdded' : 'DonateAppNameRemoved';
+                appInsights.trackEvent(event, { Name: this.fullname(student) }, { });
             }
         },
         donateClick: function () {
             if (appInsights) {
                 appInsights.trackEvent
-                  ('DonateClick',
+                  ('DonateAppClickDonate',
                      // String properties:
                      { StudentList: this.studentList, AmountValid: this.amountValid, Url: this.url },
                      // Numeric metrics:
@@ -51,14 +51,14 @@ var app = new Vue({
                   );
             }
         },
-        searchClick: function () {
+        searchClick: function (count) {
             if (appInsights) {
                 appInsights.trackEvent
-                  ('SearchClick',
+                  ('DonateAppClickSearch',
                      // String properties:
                      { Query: this.query },
                      // Numeric metrics:
-                     { }
+                     { ResultCount: count }
                   );
             }
         }
@@ -123,6 +123,7 @@ var app = new Vue({
                         student.lastname.toLowerCase().indexOf(query) > -1 ||
                         student.grade.toLowerCase().indexOf(query) > -1;
                 });
+                this.searchClick(students.length);
             }
             return students;
         }
