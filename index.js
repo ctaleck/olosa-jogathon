@@ -91,7 +91,7 @@ var app = new Vue({
             }, 0);
         },
         studentListValid: function () {
-            return this.studentList && this.studentList.length < 128;
+            return this.studentList ? this.studentList.length < 128 : true;
         },
         studentList: function () {
             var selected = this.students.filter(student => student.selected);
