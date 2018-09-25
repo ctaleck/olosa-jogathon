@@ -10,6 +10,15 @@ var app = new Vue({
     }),
     methods: {
         reset: function () {
+             if (appInsights) {
+                appInsights.trackEvent
+                  ('ResetClick',
+                     // String properties:
+                     { Query: this.query },
+                     // Numeric metrics:
+                     { }
+                  );
+            }
             this.query = null;
         },
         cardClass: function (student) {
@@ -26,6 +35,32 @@ var app = new Vue({
         select: function (student) {
             this.isDirty = true;
             student.selected = !student.selected;
+            if (appInsights) {
+                var event = student.selected ? 'NameAdded' : 'NameRemoved';
+                appInsights.trackEvent(event, { Name: this.fullname }, { });
+            }
+        },
+        donateClick: function () {
+            if (appInsights) {
+                appInsights.trackEvent
+                  ('DonateClick',
+                     // String properties:
+                     { StudentList: this.studentList, AmountValid: this.amountValid, Url: this.url },
+                     // Numeric metrics:
+                     { }
+                  );
+            }
+        },
+        searchClick: function () {
+            if (appInsights) {
+                appInsights.trackEvent
+                  ('SearchClick',
+                     // String properties:
+                     { Query: this.query },
+                     // Numeric metrics:
+                     { }
+                  );
+            }
         }
     },
     computed: {
