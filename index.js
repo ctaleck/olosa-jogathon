@@ -90,15 +90,26 @@ var app = new Vue({
                 return student.selected ? total + student.amount : total;
             }, 0);
         },
+        studentListValid: function () {
+            return this.studentList && this.studentList.length < 128;
+        },
         studentList: function () {
             var selected = this.students.filter(student => student.selected);
             if (selected.length > 0) {
                 var names = selected.map(student =>
-                    student.amount && student.amount
+                    student.amount && student.amount > 0
                         ? student.title + ' ' + student.firstname + ' ' + student.lastname + ' ($' + student.amount.toLocaleString() + ')'
                         : ''
                     );
+                var namesShort = selected.map(student =>
+                    student.amount && student.amount > 0
+                        ? student.firstname.substring(0,1).toUpperCase() + '.' + student.lastname.substring(0,5).toUpperCase() + '-' + student.amount.toLocaleString()
+                        : ''
+                    );
                 var list = names.join('; ');
+                if (list.length > 127) {
+                    list = namesShort.join(';');
+                }
             }
             return list;
         },
