@@ -144,7 +144,7 @@
                         Goal: ${{progress.goal.toLocaleString()}}
                     </p>
                 </template>
-                <div v-show="studentList && amountTotal && amountValid">
+                <div v-show="studentList && amountTotal && amountValid && studentListValid">
                     <p v-on:click="donateClick()">
                         <a v-bind:href="url" class="btn btn-lg btn-success my-2">DONATE</a>
                     </p>
@@ -154,13 +154,16 @@
                     </p>
                     <p class="lead">{{studentList}}</p>
                 </div>
-                <div v-show="!studentList || !amountTotal || !amountValid">
+                <div v-show="!studentList || !amountTotal || !amountValid || !studentListValid">
                     <p v-on:click="donateClick()">
                         <a href="" class="btn btn-lg btn-success my-2 disabled">DONATE</a>
                     </p>
+                    <p v-if="!studentListValid" class="text-danger">
+                        You have added too many names for this form to handle. Please remove one or more to complete. 
+                        If needed, please contact the office directly to make this donation.
+                    </p>    
                     <p v-if="isDirty" class="text-danger">
-                        The form is not complete. Please add at least one
-                        name and amount.
+                        The form is not complete. Please add at least one name and amount.
                     </p>
                     <p class="lead">Your selected students list is empty.</p>
                 </div>
