@@ -91,6 +91,17 @@ var app = new Vue({
             }, 0);
         },
         studentListValid: function () {
+            if (this.studentList.length > 127) {
+                if (appInsights) {
+                    appInsights.trackEvent
+                      ('DonateAppStudentListTooLong',
+                         // String properties:
+                         { StudentList: this.studentList },
+                         // Numeric metrics:
+                         { }
+                      );
+                }            
+            }
             return this.studentList ? this.studentList.length < 128 : true;
         },
         studentList: function () {
