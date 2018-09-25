@@ -91,7 +91,7 @@ var app = new Vue({
             }, 0);
         },
         studentListValid: function () {
-            if (this.studentList.length > 127) {
+            if (this.studentList && this.studentList.length > 127) {
                 if (appInsights) {
                     appInsights.trackEvent
                       ('DonateAppStudentListTooLong',
