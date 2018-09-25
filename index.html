@@ -30,13 +30,13 @@
     automatically in just a few seconds.
     -->
     <script type="text/javascript">
-    var appInsights=window.appInsights||function(a){
-      function b(a){c[a]=function(){var b=arguments;c.queue.push(function(){c[a].apply(c,b)})}}var c={config:a},d=document,e=window;setTimeout(function(){var b=d.createElement("script");b.src=a.url||"https://az416426.vo.msecnd.net/scripts/a/ai.0.js",d.getElementsByTagName("script")[0].parentNode.appendChild(b)});try{c.cookie=d.cookie}catch(a){}c.queue=[];for(var f=["Event","Exception","Metric","PageView","Trace","Dependency"];f.length;)b("track"+f.pop());if(b("setAuthenticatedUserContext"),b("clearAuthenticatedUserContext"),b("startTrackEvent"),b("stopTrackEvent"),b("startTrackPage"),b("stopTrackPage"),b("flush"),!a.disableExceptionTracking){f="onerror",b("_"+f);var g=e[f];e[f]=function(a,b,d,e,h){var i=g&&g(a,b,d,e,h);return!0!==i&&c["_"+f](a,b,d,e,h),i}}return c
-      }({
-          instrumentationKey:"cf979aaf-e12c-4ccc-ba21-8784b5395b62"
-      });
+        var appInsights=window.appInsights||function(a){
+          function b(a){c[a]=function(){var b=arguments;c.queue.push(function(){c[a].apply(c,b)})}}var c={config:a},d=document,e=window;setTimeout(function(){var b=d.createElement("script");b.src=a.url||"https://az416426.vo.msecnd.net/scripts/a/ai.0.js",d.getElementsByTagName("script")[0].parentNode.appendChild(b)});try{c.cookie=d.cookie}catch(a){}c.queue=[];for(var f=["Event","Exception","Metric","PageView","Trace","Dependency"];f.length;)b("track"+f.pop());if(b("setAuthenticatedUserContext"),b("clearAuthenticatedUserContext"),b("startTrackEvent"),b("stopTrackEvent"),b("startTrackPage"),b("stopTrackPage"),b("flush"),!a.disableExceptionTracking){f="onerror",b("_"+f);var g=e[f];e[f]=function(a,b,d,e,h){var i=g&&g(a,b,d,e,h);return!0!==i&&c["_"+f](a,b,d,e,h),i}}return c
+          }({
+              instrumentationKey:"cf979aaf-e12c-4ccc-ba21-8784b5395b62"
+          });
 
-    window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&appInsights.trackPageView();
+        window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&appInsights.trackPageView();
     </script>
 </head>
 
@@ -145,8 +145,8 @@
                     </p>
                 </template>
                 <div v-show="studentList && amountTotal && amountValid">
-                    <p>
-                        <a v-bind:href="url" v-on:mousedown="donateClick()" class="btn btn-lg btn-success my-2">DONATE</a>
+                    <p v-on:click="donateClick()">
+                        <a v-bind:href="url" class="btn btn-lg btn-success my-2">DONATE</a>
                     </p>
                     <p>
                         You are making a one-time donation totaling ${{amountTotal.toLocaleString()}}. The amount will
@@ -155,8 +155,8 @@
                     <p class="lead">{{studentList}}</p>
                 </div>
                 <div v-show="!studentList || !amountTotal || !amountValid">
-                    <p>
-                        <a href="" v-on:mousedown="donateClick()" class="btn btn-lg btn-success my-2 disabled">DONATE</a>
+                    <p v-on:click="donateClick()">
+                        <a href="" class="btn btn-lg btn-success my-2 disabled">DONATE</a>
                     </p>
                     <p v-if="isDirty" class="text-danger">
                         The form is not complete. Please add at least one
