@@ -146,7 +146,7 @@
                 </template>
                 <div v-show="studentList && amountTotal && amountValid">
                     <p>
-                        <a v-bind:href="url" class="btn btn-lg btn-success my-2">DONATE</a>
+                        <a v-bind:href="url" v-on:click="donateClick()" class="btn btn-lg btn-success my-2">DONATE</a>
                     </p>
                     <p>
                         You are making a one-time donation totaling ${{amountTotal.toLocaleString()}}. The amount will
@@ -156,7 +156,7 @@
                 </div>
                 <div v-show="!studentList || !amountTotal || !amountValid">
                     <p>
-                        <a href="" class="btn btn-lg btn-success my-2 disabled">DONATE</a>
+                        <a href="" v-on:click="donateClick()" class="btn btn-lg btn-success my-2 disabled">DONATE</a>
                     </p>
                     <p v-if="isDirty" class="text-danger">
                         The form is not complete. Please add at least one
