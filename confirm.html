@@ -1,13 +1,10 @@
-﻿<!doctype html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>2018 Jog-A-Thon | Our Lady of Sorrows Academy</title>
+    <title>Thank You | 2018 Jog-A-Thon | Our Lady of Sorrows Academy</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
@@ -38,10 +35,9 @@
 
         window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&appInsights.trackPageView();
     </script>
+
 </head>
-
 <body>
-
     <header>
         <div class="collapse bg-dark" id="navbarHeader">
             <div class="container">
@@ -104,7 +100,7 @@
                 <a href="#" class="navbar-brand d-flex align-items-center">
                     <span class="oi oi-dashboard"></span>&nbsp;<strong>Fundraising Donations</strong>
                 </a>
-                <button title="More about donations" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader"
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader"
                     aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="oi oi-caret-bottom"></span>
                 </button>
@@ -128,49 +124,11 @@
                 <h1 class="jumbotron-heading">2018 Jog-A-Thon</h1>
                 <h4 class="text-secondary">Our Lady of Sorrows Academy</h4>
                 <p class="lead text-muted">
-                    Please donate to the 2018 Jog-A-Thon by adding the names of students, priests &amp; faculty you
-                    want to associate your donation with first. Once you add the names and amount,
-                    select the green DONATE payment
-                    button to enter your credit card information on the next page.
+                    Thank you for your donation. 
                 </p>
-                <template v-if="progress.amount > 0">
-                    <p>
-                        <div class="progress" style="height:48px;">
-                            <div v-bind:style="progressStyle" class="progress-bar progress-bar-striped progress-bar-animated bg-danger"
-                                 role="progressbar">{{progressDisplay}}</div>
-                            <div v-if="false" v-bind:style="progressoverStyle" class="progress-bar progress-bar-striped bg-success"
-                                 role="progressbar">{{progressoverDisplay}}</div>
-                        </div>
-                        Goal: ${{progress.goal.toLocaleString()}}
-                    </p>
-                </template>
-                <div v-show="studentList && amountTotal && amountValid && studentListValid">
-                    <p v-on:click="donateClick()">
-                        <a v-bind:href="url" class="btn btn-lg btn-success my-2">DONATE</a>
-                    </p>
-                    <p>
-                        You are making a one-time donation totaling ${{amountTotal.toLocaleString()}}. The amount will
-                        sponsor the following:
-                    </p>
-                    <p class="lead">{{studentList}}</p>
-                </div>
-                <div v-show="!studentList || !amountTotal || !amountValid || !studentListValid">
-                    <p v-on:click="donateClick()">
-                        <a href="" class="btn btn-lg btn-success my-2 disabled">DONATE</a>
-                    </p>
-                    <p v-if="!studentListValid" class="text-danger">
-                        You have added too many names for this form to handle. Please remove one or more to complete. 
-                        If needed, please contact the office directly to make this donation.
-                    </p>    
-                    <p v-if="isDirty" class="text-danger">
-                        The form is not complete. Please add at least one name and amount.
-                    </p>
-                    <p class="lead">Your selected students list is empty.</p>
-                </div>
-                <hr class="my-4">
+                <hr>
                 <div class="jumbotron-footer">
                     <p class="img-fluid"><img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/cc-badges-ppmcvdam.png" alt="Donate now with PayPal" class="img-fluid" /></p>
-                    <p v-if="urls.paypalEmailVerifyHref" class="small">Payments to: {{urls.paypalEmail}} <a v-bind:href="urls.paypalEmailVerifyHref">Verify</a></p>
                 </div>
             </div>
         </section>
@@ -179,82 +137,13 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <p>Please fill out the following form to donate. Thank you!</p>
+                        <p>Thank you for your donation. Your transaction has completed, and we are sending you an email containing the receipt for your payment.</p>
+                        <p>Please contact us if you have any questions about your donation. Thank you!</p>
                     </div>
                 </div>
-                <div class="form-row align-items-center mb-2">
-                    <div class="col-12">
-                        <label class="sr-only" for="inlineFormInputGroup">Search</label>
-                        <div class="input-group mb-2">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text"><span class="oi oi-magnifying-glass"></span></div>
-                            </div>
-                            <input v-model="query" type="text" class="form-control" id="inlineFormInputGroup"
-                                   aria-describedby="searchHelp" placeholder="Search">
-                            <div class="input-group-append">
-                                <button v-on:click="reset()" type="button" class="btn btn-outline-secondary input-group-text">
-                                    <span class="oi oi-x"></span>
-                                </button>
-                            </div>
-                        </div>
-                        <small id="searchHelp" class="form-text text-muted">
-                            <span class="oi oi-info"></span> To quickly
-                            locate a student, type a name or grade. To quickly locate priests or faculty, type
-                            'faculty'.
-                        </small>
-                    </div>
-                </div>
+
                 <div class="row">
 
-
-                    <!--begin card template-->
-                    <div v-for="student in studentsFiltered" class="col-lg-4 col-md-6">
-                        <div class="card mb-4 box-shadow">
-
-                            <img class="card-img-top" v-if="student.image" v-bind:src="student.image" :alt="fullname(student)">
-                            <ul class="list-group list-group-flush">
-                                <li v-bind:class="cardClass(student)" class="list-group-item">{{fullname(student)}}</li>
-                            </ul>
-                            <div class="card-body">
-                                <div v-show="student.selected" class="card-text">
-                                    <div class="form-check-inline">
-                                        <label class="form-check-label">
-                                            <input v-model.number="student.amount" v-bind:name="student.order" type="radio"
-                                                   class="form-check-input" value="25">$25
-                                        </label>
-                                    </div>
-                                    <div class="form-check-inline">
-                                        <label class="form-check-label">
-                                            <input v-model.number="student.amount" v-bind:name="student.order" type="radio"
-                                                   class="form-check-input" value="50">$50
-                                        </label>
-                                    </div>
-                                    <div class="form-check-inline">
-                                        <label class="form-check-label">
-                                            <input v-model.number="student.amount" v-bind:name="student.order" type="radio"
-                                                   class="form-check-input" value="100">$100
-                                        </label>
-                                    </div>
-                                    <div class="input-group mb-2">
-                                        <div class="input-group-prepend">
-                                            <div class="input-group-text">$</div>
-                                        </div>
-                                        <input v-model.number="student.amount" type="number" class="form-control" value=""
-                                               min="1" placeholder="Other amount">
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group" :title="(student.selected ? 'Remove ' : 'Add ') + student.firstname + (student.selected ? ' from donation list' : ' to donation list')">
-                                        <button v-on:click="select(student)" type="button" class="btn btn-sm btn-outline-secondary">
-                                            {{ student.selected ? 'Remove' : 'Add' }}
-                                        </button>
-                                    </div>
-                                    <small class="text-muted">{{student.grade}}</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--end card template-->
                     <!--end row-->
                 </div>
             </div>
@@ -284,10 +173,6 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <!-- production version, optimized for size and speed -->
     <!--script src="https://cdn.jsdelivr.net/npm/vue"></script-->
-    <script src="./urls.js"></script>
-    <script src="./students.js"></script>
-    <script src="./progress.js"></script>
-    <script src="./index.js"></script>
-</body>
 
+</body>
 </html>
