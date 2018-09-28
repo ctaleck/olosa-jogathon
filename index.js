@@ -136,7 +136,7 @@ var app = new Vue({
             ].join("")
         },
         studentsFiltered: function () {
-            var students = this.students.sort((a, b) => a.order - b.order);
+            var students = this.students.sort((a, b) => a.order - b.order).slice();
             if (this.query) {
                 var query = this.query.toLowerCase();
                 students = this.students.filter(function (student) {
@@ -147,6 +147,12 @@ var app = new Vue({
                 });
                 this.searchClick(students.length);
             }
+            // add break indicator
+            students.forEach(function(student, index, all){
+                if (index > 0 && all[index].grade != all[index-1].grade) {
+                    all.splice(index, 0, { divide: true, grade: student.grade });
+                }
+            });
             return students;
         }
     }

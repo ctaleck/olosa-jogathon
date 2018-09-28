@@ -778,5 +778,15 @@ var students = [
     "image": null,
     "amount": null,
     "order": 2300
+  },
+  {
+    "title": "Fr.",
+    "firstname": "Leo Anthony",
+    "lastname": "Haynos",
+    "grade": "Faculty",
+    "selected": false,
+    "image": null,
+    "amount": null,
+    "order": 1210
   }
 ];
