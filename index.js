@@ -147,13 +147,18 @@ var app = new Vue({
                 });
                 this.searchClick(students.length);
             }
-            // add break indicator
+            // add dividers (don't modify iterated arrays)
+            var studentsFiltered = [];
             students.forEach(function(student, index, all){
-                if (index > 0 && all[index].grade != all[index-1].grade) {
-                    all.splice(index, 0, { divide: true, grade: student.grade });
+                if (index === 0){ 
+                    studentsFiltered.push({ divide: true, grade: student.grade });
                 }
+                if (index > 0 && all[index].grade != all[index-1].grade) {
+                    studentsFiltered.push({ divide: true, grade: student.grade });
+                }
+                studentsFiltered.push(student);
             });
-            return students;
+            return studentsFiltered;
         }
     }
 });
