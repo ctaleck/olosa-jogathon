@@ -64,22 +64,6 @@ var app = new Vue({
         }
     },
     computed: {
-        progressDisplay: function () {
-            return '$' + this.progress.amount.toLocaleString();
-        },
-        progressoverDisplay: function () {
-            var progressover = this.progress.goal - this.progress.amount;
-            return '$' + progressover.toLocaleString();
-        },
-        progressStyle: function () {
-            var width = Math.floor((this.progress.amount / this.progress.goal) * 100);
-            return { width: width + '%'};
-        },
-        progressoverStyle: function () {
-            var amountover = this.progress.goal - this.progress.amount;
-            var width = (amountover / (this.progress.max - this.progress.goal) * 100) * .25;
-            return { width: width + '%'};
-        },
         amountValid: function () {
             return this.students.every(function (student) {
                 return student.selected ? student.amount > 0 : true;
