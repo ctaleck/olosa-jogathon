@@ -61,6 +61,17 @@ var app = new Vue({
                      { ResultCount: count }
                   );
             }
+        },
+        trackEvent: function (name, state) {
+            if (appInsights) {
+                appInsights.trackEvent
+                  ('DonateAppClickAbout',
+                     // String properties:
+                     { EventName: name, EventState: state},
+                     // Numeric metrics:
+                     {  }
+                  );
+            }
         }
     },
     computed: {

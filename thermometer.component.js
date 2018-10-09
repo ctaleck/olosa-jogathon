@@ -47,6 +47,7 @@ Vue.component('cmt-thermometer', {
       repeatDelay: 3
     });
     thermometerTimeline
+        .call(this.resetProgress)
         .set(progressText, {
           text: '$0',
           rotation: 180,
@@ -67,14 +68,15 @@ Vue.component('cmt-thermometer', {
       })
       .set(svgLineBody, { 
         opacity: 1, 
-        scaleX: 1, 
-        width: 0,
+        // width: 0, // does not work in Firefox
         rotation: 180,
-        transformOrigin: 'left center'
+        transformOrigin: 'left center',
+        scaleX: 0
       })
       .to(svgLineBody, 1, {
         delay: 3,
-        width: thermometerLineBodyDistance * thermometerPercent,
+        // width: thermometerLineBodyDistance * thermometerPercent, // does not work in Firefox
+        scaleX: thermometerPercent,
         ease: Power3.easeInOut
       }, 0)
       .to(progressText, 1, {
@@ -93,6 +95,9 @@ Vue.component('cmt-thermometer', {
     thermometerTimeline.play();
   },
   methods: {
+    resetProgress: function () {
+      this.animate.progress = 0;
+    },
     animateProgress: function () {
       TweenLite
         .to(this.animate, 1, {

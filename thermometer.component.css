@@ -1,9 +1,9 @@
 .svgCont {
-    width: 100%;
     border: solid 1px #ccc;
     border: none;
     box-sizing: border-box;
     margin: auto;
+    cursor: pointer;
 }
 .svgCont div {
     transform: rotate(180deg);
@@ -14,8 +14,7 @@
 }
 .svgCont svg #thermometerLineBody,
 .svgCont svg #thermometerLineHead {
-    opacity: 0;
-    /* set the red line invisible initially */
+    opacity: 0; /* set the red line invisible initially */
 }
 #progressText {
     fill: #ffffff;

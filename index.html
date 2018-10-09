@@ -111,7 +111,7 @@
         <div class="navbar navbar-dark bg-dark box-shadow">
             <div class="container d-flex justify-content-between">
                 <a href="#" class="navbar-brand d-flex align-items-center">
-                    <span class="oi oi-dashboard"></span>&nbsp;<strong>Fundraising Donations</strong>
+                    <span class="oi oi-dashboard"></span>&nbsp;<strong>OLOSA Fundraising</strong>
                 </a>
                 <button title="More about donations" class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
@@ -141,7 +141,7 @@
                     select the green DONATE payment
                     button to enter your credit card information on the next page.
                 </p>
-                <cmt-thermometer v-bind:progress="progress.amount" v-bind:goal="progress.goal"></cmt-thermometer>
+                <cmt-thermometer v-on:click.native="trackEvent('ProgressClick', $event)" v-bind:progress="progress.amount" v-bind:goal="progress.goal"></cmt-thermometer>
                 <hr class="my-4">
                 <div class="jumbotron-footer">
                     <p class="img-fluid"><img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/cc-badges-ppmcvdam.png"
@@ -229,7 +229,7 @@
                                         </button>
                                     </div>
                                     <small v-if="student.selected && !student.amount" class="text-danger">Enter amount</small>
-                                    <small v-if="student.selected && student.amount" class="text-info"><a href="#bottom">Skip to bottom</a></a></small>
+                                    <small v-if="student.selected && student.amount" class="text-info"><a href="#bottom">Skip to bottom</a></small>
                                 </div>
                             </div>
                         </div>
