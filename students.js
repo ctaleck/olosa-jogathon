@@ -511,6 +511,16 @@ var students = [
   },
   {
     "title": "",
+    "firstname": "Patricia",
+    "lastname": "Rosario",
+    "grade": "9th Grade",
+    "selected": false,
+    "image": null,
+    "amount": null,
+    "order": 525
+  },
+  {
+    "title": "",
     "firstname": "Kayla",
     "lastname": "Pryor",
     "grade": "10th Grade",
