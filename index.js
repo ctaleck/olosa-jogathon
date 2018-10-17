@@ -1,13 +1,15 @@
 // Donate app
 var app = new Vue({
     el: '#app',
-    data: () => ({
-        students: window.students,
-        urls: window.urls,
-        progress: window.progress,
-        query: null,
-        isDirty: false
-    }),
+    data: function() {
+        return {
+            students: window.students,
+            urls: window.urls,
+            progress: window.progress,
+            query: null,
+            isDirty: false
+        }
+    },
     methods: {
         reset: function () {
              if (appInsights) {
@@ -100,18 +102,18 @@ var app = new Vue({
             return this.studentList ? this.studentList.length < 128 : true;
         },
         studentList: function () {
-            var selected = this.students.filter(student => student.selected);
+            var selected = this.students.filter(function (student) {return student.selected});
             if (selected.length > 0) {
-                var names = selected.map(student =>
-                    student.amount && student.amount > 0
+                var names = selected.map(function (student) {
+                    return student.amount && student.amount > 0
                         ? student.title + ' ' + student.firstname + ' ' + student.lastname + ' ($' + student.amount.toLocaleString() + ')'
                         : ''
-                    );
-                var namesShort = selected.map(student =>
-                    student.amount && student.amount > 0
+                });
+                var namesShort = selected.map(function (student){
+                    return student.amount && student.amount > 0
                         ? student.firstname.substring(0,1).toUpperCase() + '.' + student.lastname.substring(0,5).toUpperCase() + '-' + student.amount.toLocaleString()
                         : ''
-                    );
+                });
                 var list = names.join('; ');
                 if (list.length > 127) {
                     list = namesShort.join(';');
@@ -131,7 +133,7 @@ var app = new Vue({
             ].join("")
         },
         studentsFiltered: function () {
-            var students = this.students.sort((a, b) => a.order - b.order).slice();
+            var students = this.students.sort(function(a, b) { return a.order - b.order}).slice();
             if (this.query) {
                 var query = this.query.toLowerCase();
                 students = this.students.filter(function (student) {
