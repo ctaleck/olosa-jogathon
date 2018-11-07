@@ -1,6 +1,16 @@
 var students = [
   {
     "title": "",
+    "firstname": "Marcel",
+    "lastname": "Henry",
+    "grade": "Kindergarten",
+    "selected": false,
+    "image": null,
+    "amount": null,
+    "order": 0
+  },
+  {
+    "title": "",
     "firstname": "Kai",
     "lastname": "Aguirre",
     "grade": "Kindergarten",
@@ -118,6 +128,16 @@ var students = [
     "image": null,
     "amount": null,
     "order": 120
+  },
+  {
+    "title": "",
+    "firstname": "Philomena",
+    "lastname": "Henry",
+    "grade": "1st Grade",
+    "selected": false,
+    "image": null,
+    "amount": null,
+    "order": 125
   },
   {
     "title": "",
@@ -241,6 +261,16 @@ var students = [
   },
   {
     "title": "",
+    "firstname": "Mary",
+    "lastname": "Henry",
+    "grade": "3rd Grade",
+    "selected": false,
+    "image": null,
+    "amount": null,
+    "order": 245
+  },
+  {
+    "title": "",
     "firstname": "Cecilia",
     "lastname": "de Wit",
     "grade": "4th Grade",
@@ -298,6 +328,16 @@ var students = [
     "image": null,
     "amount": null,
     "order": 300
+  },
+  {
+    "title": "",
+    "firstname": "Cyprian",
+    "lastname": "Henry",
+    "grade": "4th Grade",
+    "selected": false,
+    "image": null,
+    "amount": null,
+    "order": 305
   },
   {
     "title": "",
@@ -391,6 +431,16 @@ var students = [
   },
   {
     "title": "",
+    "firstname": "Rebecca",
+    "lastname": "Henry",
+    "grade": "6th Grade",
+    "selected": false,
+    "image": null,
+    "amount": null,
+    "order": 395
+  },
+  {
+    "title": "",
     "firstname": "Claire",
     "lastname": "Chione",
     "grade": "7th Grade",
@@ -468,6 +518,16 @@ var students = [
     "image": null,
     "amount": null,
     "order": 470
+  },
+  {
+    "title": "",
+    "firstname": "Natalya",
+    "lastname": "Weber",
+    "grade": "8th Grade",
+    "selected": false,
+    "image": null,
+    "amount": null,
+    "order": 475
   },
   {
     "title": "",
