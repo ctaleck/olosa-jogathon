@@ -1,4 +1,4 @@
 var progress = {
-    amount: 49634, // min 2000 to show number inside
-    goal: 49634
+    amount: 69554, // min 2000 to show number inside
+    goal: 69554
 };
