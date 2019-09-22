@@ -77,6 +77,9 @@ var app = new Vue({
         }
     },
     computed: {
+        isFramed: function () {
+            return window !== self;
+        },
         amountValid: function () {
             return this.students.every(function (student) {
                 return student.selected ? student.amount > 0 : true;
