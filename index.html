@@ -53,10 +53,11 @@
     </script>
 </head>
 
-<body>
-
+<body class="bg-dark">
+<!-- App -->
+<div id="app">
     <header v-if="!isFramed">
-        <div class="collapse bg-dark" id="navbarHeader">
+        <div class="collapse" id="navbarHeader">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-8 col-md-7 py-4">
@@ -109,7 +110,7 @@
                 </div>
             </div>
         </div>
-        <div class="navbar navbar-dark bg-dark box-shadow">
+        <div class="navbar navbar-dark box-shadow">
             <div class="container d-flex justify-content-between">
                 <a href="#" class="navbar-brand d-flex align-items-center">
                     <span class="oi oi-dashboard"></span>&nbsp;<strong>OLOSA Fundraising</strong>
@@ -122,8 +123,7 @@
         </div>
     </header>
 
-    <!-- App -->
-    <main id="app" role="main">
+    <main role="main">
         <div class="d-md-none" v-if="!isFramed">
             <img src="2019-Jog-a-thon-students-mobile.png" class="center-cropped" alt="OLOSA Class 2019">
         </div>
@@ -152,10 +152,10 @@
             </div>
         </section>
 
-        <div class="album py-5 bg-light">
+        <div class="album py-5">
             <div class="container">
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-12 text-white">
                         <p>Please fill out the following form to donate. Select DONATE at the bottom of the page. Thank you!</p>
                     </div>
                 </div>
@@ -186,16 +186,16 @@
                     <!--begin card template-->
                     <div v-for="student in studentsFiltered" v-bind:class="{ 'col-lg-4 col-md-6': !student.divide, 'col-12': student.divide }">
                         <div v-if="student.divide">
-                            <h6>{{student.grade}}</h6>
+                            <h6 class="text-white">{{student.grade}}</h6>
                             <hr />
                         </div>
-                        <div v-if="!student.divide" class="card mb-4 box-shadow">
+                        <div v-if="!student.divide" class="card mb-4 box-shadow border-0">
 
                             <img class="card-img-top" v-if="student.image" v-bind:src="student.image" :alt="fullname(student)">
                             <ul class="list-group list-group-flush">
                                 <li v-bind:class="cardClass(student)" class="list-group-item">{{fullname(student)}}</li>
                             </ul>
-                            <div class="card-body">
+                            <div class="card-body bg-light">
                                 <div v-show="student.selected" class="card-text">
                                     <div class="form-check-inline">
                                         <label class="form-check-label">
@@ -242,11 +242,11 @@
 
             </div>
         </div>
-        <section class="jumbotron bg-white text-center mb-0">
+        <section class="text-white text-center mb-0">
             <div class="container" id="bottom">
                 <div v-show="studentList && amountTotal && amountValid && studentListValid">
                     <p v-on:click="donateClick()">
-                        <a v-bind:href="url" class="btn btn-lg btn-success my-2">DONATE</a>
+                        <a v-bind:href="url" target="_blank" class="btn btn-lg btn-success my-2">DONATE</a>
                     </p>
                     <p>
                         You are making a one-time donation totaling ${{amountTotal.toLocaleString()}}. The amount
@@ -257,7 +257,7 @@
                 </div>
                 <div v-show="!studentList || !amountTotal || !amountValid || !studentListValid">
                     <p v-on:click="donateClick()">
-                        <a href="" target="_blank" class="btn btn-lg btn-success my-2 disabled">DONATE</a>
+                        <a href="" class="btn btn-lg btn-success my-2 disabled">DONATE</a>
                     </p>
                     <p v-if="!studentListValid" class="text-danger">
                         You have added too many names for this form to handle. Please remove one or more to
@@ -281,7 +281,7 @@
             <p><a href="https://ourladyofsorrows-academy.com/en">Our Lady of Sorrows Academy</a></p>
         </div>
     </footer>
-
+</div>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

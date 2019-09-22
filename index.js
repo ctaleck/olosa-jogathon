@@ -78,7 +78,11 @@ var app = new Vue({
     },
     computed: {
         isFramed: function () {
-            return window !== window.top;
+            try {
+                return window.self !== window.top;
+            } catch (e) {
+                return true;
+            }
         },
         amountValid: function () {
             return this.students.every(function (student) {
