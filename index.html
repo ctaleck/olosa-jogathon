@@ -150,23 +150,23 @@
         <div class="d-none d-md-block" v-if="!isFramed">
             <img src="2019-Jog-a-thon-students-med.jpg" class="center-cropped center-cropped-md" alt="OLOSA Class 2019">
         </div>
-        <section class="jumbotron bg-red text-white text-center mb-0" v-if="!isFramed">
+        <section class="jumbotron border-0 bg-red text-white text-center mb-0" v-if="!isFramed">
             <div class="container">
                 <h1 class="jumbotron-heading">2019 Jog-A-Thon</h1>
                 <div class="row mt-5">
-                    <div class="col-4">
+                    <div class="col-md-4">
                         <h3>The Run</h3>
                         <p>
                             Students have eight weeks to obtain sponsors who make a per lap pledge or a one-time donation. On the day of the event, participants will have one hour to run, jog, or walk as many times as they can around a one-eighth mile track. 
                         </p>
                     </div>
-                    <div class="col-4">
+                    <div class="col-md-4">
                         <h3>Our Goal</h3>
                         <p>
                             Our goal is to raise $60,000 to fund, among other expenses, security equipment, books, and academic resources. Prizes will be awarded for students who run the most number of laps, as well as for students who collect the most amount of money.
                         </p>
                     </div>
-                    <div class="col-4">
+                    <div class="col-md-4">
                         <h3>Donate</h3>
                         <p>
                             Please sponsor our students, teachers, and religious! Click ‘Donate Now’ to select the name(s) of who you will sponsor, the donation amount, your contact information, and payment information.
@@ -178,17 +178,13 @@
         <section class="jumbotron bg-dark text-center mb-0" v-if="!isFramed">
                 <div class="container">
                     <cmt-thermometer v-on:click.native="trackEvent('ProgressClick', $event)" v-bind:progress="progress.amount" v-bind:goal="progress.goal"></cmt-thermometer>
-                    <div class="jumbotron-footer">
-                        <p class="img-fluid"><img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/cc-badges-ppmcvdam.png"
-                                alt="Donate now with PayPal" class="img-fluid" /></p>
-                        <p v-if="urls.paypalEmailVerifyHref" class="small">Payments to: {{urls.paypalEmail}} <a v-bind:href="urls.paypalEmailVerifyHref">Verify</a></p>
-                    </div>
                 </div>
             </section>
-        <div class="album py-5">
+        <div class="album pb-5">
             <div class="container" id="search" ref="search">
                 <div class="row">
                     <div class="col-12 text-white">
+                        <h1 class="text-center pb-5">Sponsor Form</h1>
                         <p>Please fill out the following form to donate. Select DONATE at the bottom of the page. Thank you!</p>
                     </div>
                 </div>
@@ -302,6 +298,11 @@
                         The form is not complete. Please add at least one name and amount.
                     </p>
                     <p class="lead">Your selected students list is empty.</p>
+                </div>
+                <div class="mt-5">
+                    <p class="img-fluid"><img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/cc-badges-ppmcvdam.png"
+                            alt="Donate now with PayPal" class="img-fluid" /></p>
+                    <p v-if="urls.paypalEmailVerifyHref" class="small">Payments to: {{urls.paypalEmail}} <a v-bind:href="urls.paypalEmailVerifyHref">Verify</a></p>
                 </div>
             </div>
         </section>
