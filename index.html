@@ -15,12 +15,29 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.css"
         integrity="sha256-CNwnGWPO03a1kOlAsGaH5g8P3dFaqFqqGFV/1nkX5OU=" crossorigin="anonymous" />
     <link rel="stylesheet" href="thermometer.component.css" />
+    <link href="https://fonts.googleapis.com/css?family=Contrail+One&display=swap" rel="stylesheet">
     <style>
+        .parallax { 
+            /* The image used */
+            background-image: url("2019-Jog-a-thon-students-med.jpg");
+
+            /* Set a specific height */
+            height: 500px; 
+
+            /* Create the parallax scrolling effect */
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
         .center-cropped {
             object-fit: none;
             object-position: center;
             height: 425px;
             width: 100%;
+        }
+        .bg-red {
+            background-color: #b81413;
         }
         a {
             color: #b81413;
@@ -33,6 +50,9 @@
         .center-cropped-md {
             object-fit: fill;
             height: 100%;
+        }
+        h1, h2, h3, h4 {
+            font-family: 'Contrail One', cursive;
         }
     </style>
     <!-- 
@@ -125,35 +145,48 @@
 
     <main role="main">
         <div class="d-md-none" v-if="!isFramed">
-            <img src="2019-Jog-a-thon-students-mobile.png" class="center-cropped" alt="OLOSA Class 2019">
+            <img src="2019-Jog-a-thon-students-mobile.jpg" class="center-cropped" alt="OLOSA Class 2019">
         </div>
         <div class="d-none d-md-block" v-if="!isFramed">
-            <img src="2019-Jog-a-thon-students-med.png" class="center-cropped center-cropped-md" alt="OLOSA Class 2019">
+            <img src="2019-Jog-a-thon-students-med.jpg" class="center-cropped center-cropped-md" alt="OLOSA Class 2019">
         </div>
-        <section class="jumbotron bg-white text-center mb-0" v-if="!isFramed">
+        <section class="jumbotron bg-red text-white text-center mb-0" v-if="!isFramed">
             <div class="container">
-                <img src="OLOSA_logo.png" class="float-md-left" alt="Our Lady of Sorrows Academy logo">
                 <h1 class="jumbotron-heading">2019 Jog-A-Thon</h1>
-                <h4 class="text-secondary">Our Lady of Sorrows Academy</h4>
-                <p class="lead text-muted">
-                    Please donate to the 2019 Jog-A-Thon
-                    by adding the names of students, priests &amp; faculty you
-                    want to associate your donation with first. Once you add the names and amount,
-                    select the green DONATE payment
-                    button to enter your credit card information on the next page.
-                </p>
-                <cmt-thermometer v-on:click.native="trackEvent('ProgressClick', $event)" v-bind:progress="progress.amount" v-bind:goal="progress.goal"></cmt-thermometer>
-                <hr class="my-4">
-                <div class="jumbotron-footer">
-                    <p class="img-fluid"><img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/cc-badges-ppmcvdam.png"
-                            alt="Donate now with PayPal" class="img-fluid" /></p>
-                    <p v-if="urls.paypalEmailVerifyHref" class="small">Payments to: {{urls.paypalEmail}} <a v-bind:href="urls.paypalEmailVerifyHref">Verify</a></p>
+                <div class="row mt-5">
+                    <div class="col-4">
+                        <h3>The Run</h3>
+                        <p>
+                            Students have eight weeks to obtain sponsors who make a per lap pledge or a one-time donation. On the day of the event, participants will have one hour to run, jog, or walk as many times as they can around a one-eighth mile track. 
+                        </p>
+                    </div>
+                    <div class="col-4">
+                        <h3>Our Goal</h3>
+                        <p>
+                            Our goal is to raise $60,000 to fund, among other expenses, security equipment, books, and academic resources. Prizes will be awarded for students who run the most number of laps, as well as for students who collect the most amount of money.
+                        </p>
+                    </div>
+                    <div class="col-4">
+                        <h3>Donate</h3>
+                        <p>
+                            Please sponsor our students, teachers, and religious! Click ‘Donate Now’ to select the name(s) of who you will sponsor, the donation amount, your contact information, and payment information.
+                        </p>
+                    </div>
                 </div>
             </div>
         </section>
-
+        <section class="jumbotron bg-dark text-center mb-0" v-if="!isFramed">
+                <div class="container">
+                    <cmt-thermometer v-on:click.native="trackEvent('ProgressClick', $event)" v-bind:progress="progress.amount" v-bind:goal="progress.goal"></cmt-thermometer>
+                    <div class="jumbotron-footer">
+                        <p class="img-fluid"><img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/cc-badges-ppmcvdam.png"
+                                alt="Donate now with PayPal" class="img-fluid" /></p>
+                        <p v-if="urls.paypalEmailVerifyHref" class="small">Payments to: {{urls.paypalEmail}} <a v-bind:href="urls.paypalEmailVerifyHref">Verify</a></p>
+                    </div>
+                </div>
+            </section>
         <div class="album py-5">
-            <div class="container">
+            <div class="container" id="search" ref="search">
                 <div class="row">
                     <div class="col-12 text-white">
                         <p>Please fill out the following form to donate. Select DONATE at the bottom of the page. Thank you!</p>
@@ -224,13 +257,13 @@
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group" :title="(student.selected ? 'Remove ' : 'Add ') + student.firstname + (student.selected ? ' from donation list' : ' to donation list')">
-                                        <button v-on:click="select(student)" type="button" class="btn btn-sm btn-outline-secondary">
-                                            {{ student.selected ? 'Remove' : 'Add' }}
+                                    <div class="btn-group" :title="(student.selected ? 'Remove ' : 'Sponsor ') + student.firstname + (student.selected ? ' from donation list' : ' ')">
+                                        <button v-on:click="select(student)" type="button" :class="{ 'btn btn-sm btn-info': !student.selected, 'btn btn-sm btn-danger': student.selected }">
+                                            {{ student.selected ? 'Remove' : 'Sponsor' }}
                                         </button>
                                     </div>
                                     <small v-if="student.selected && !student.amount" class="text-danger">Enter amount</small>
-                                    <small v-if="student.selected && student.amount" class="text-info"><a href="#bottom">Skip to bottom</a></small>
+                                    <small v-if="student.selected && student.amount" class="text-success"><button type="button" class="btn btn-sm btn-outline-success" v-on:click="gotoBottom()">Review and Donate</button></small>
                                 </div>
                             </div>
                         </div>
@@ -243,10 +276,11 @@
             </div>
         </div>
         <section class="text-white text-center mb-0">
-            <div class="container" id="bottom">
+            <div class="container" id="bottom" ref="bottom">
                 <div v-show="studentList && amountTotal && amountValid && studentListValid">
                     <p v-on:click="donateClick()">
-                        <a v-bind:href="url" target="_blank" class="btn btn-lg btn-success my-2">DONATE</a>
+                        <a v-bind:href="url" target="_blank" class="btn btn-lg btn-success my-2 mr-5">DONATE</a>
+                        <button type="button" class="btn btn-lg btn-outline-success" v-on:click="gotoSearch()">Search More</button>
                     </p>
                     <p>
                         You are making a one-time donation totaling ${{amountTotal.toLocaleString()}}. The amount

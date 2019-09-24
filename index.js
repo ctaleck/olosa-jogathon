@@ -74,6 +74,12 @@ var app = new Vue({
                      {  }
                   );
             }
+        },
+        gotoSearch() {
+            this.$refs.search.scrollIntoView();
+        },
+        gotoBottom() {
+            this.$refs.bottom.scrollIntoView();
         }
     },
     computed: {
