@@ -21,14 +21,14 @@
             /* The image used */
             background-image: url("2019-Jog-a-thon-students-med.jpg");
 
-            /* Set a specific height */
+            /* Set a specific height 
             height: 500px; 
-
+*/
             /* Create the parallax scrolling effect */
             background-attachment: fixed;
-            background-position: center;
+            background-position: top 57px center;
             background-repeat: no-repeat;
-            background-size: cover;
+            background-size: 100% auto;
         }
         .center-cropped {
             object-fit: none;
@@ -36,8 +36,17 @@
             height: 425px;
             width: 100%;
         }
+        .bg-blue {
+            background-color: #094A8C;
+        }
+        .bg-dark-blue {
+            background-color: #06325F;
+        }
         .bg-red {
             background-color: #b81413;
+        }
+        .bg-yellow {
+            background-color: #FCEE6C;
         }
         a {
             color: #b81413;
@@ -66,17 +75,17 @@
         var appInsights = window.appInsights || function (a) {
             function b(a) { c[a] = function () { var b = arguments; c.queue.push(function () { c[a].apply(c, b) }) } } var c = { config: a }, d = document, e = window; setTimeout(function () { var b = d.createElement("script"); b.src = a.url || "https://az416426.vo.msecnd.net/scripts/a/ai.0.js", d.getElementsByTagName("script")[0].parentNode.appendChild(b) }); try { c.cookie = d.cookie } catch (a) { } c.queue = []; for (var f = ["Event", "Exception", "Metric", "PageView", "Trace", "Dependency"]; f.length;)b("track" + f.pop()); if (b("setAuthenticatedUserContext"), b("clearAuthenticatedUserContext"), b("startTrackEvent"), b("stopTrackEvent"), b("startTrackPage"), b("stopTrackPage"), b("flush"), !a.disableExceptionTracking) { f = "onerror", b("_" + f); var g = e[f]; e[f] = function (a, b, d, e, h) { var i = g && g(a, b, d, e, h); return !0 !== i && c["_" + f](a, b, d, e, h), i } } return c
         }({
-            instrumentationKey: "cf979aaf-e12c-4ccc-ba21-8784b5395b62"
+            instrumentationKey: "2beb8a98-f9eb-43bb-b54e-1d1eab3c95e0"
         });
 
         window.appInsights = appInsights, appInsights.queue && 0 === appInsights.queue.length && appInsights.trackPageView();
     </script>
 </head>
 
-<body class="bg-dark">
+<body class="bg-blue">
 <!-- App -->
 <div id="app">
-    <header v-if="!isFramed" style="background-color: #094A8C">
+    <header v-if="!isFramed">
         <div class="collapse" id="navbarHeader">
             <div class="container">
                 <div class="row">
@@ -148,10 +157,14 @@
         <div class="d-md-none" v-if="!isFramed">
             <img src="2019-Jog-a-thon-students-mobile.jpg" class="center-cropped" alt="OLOSA Class 2019">
         </div>
-        <div class="d-none d-md-block" v-if="!isFramed">
-            <img src="2019-Jog-a-thon-students-med.jpg" class="center-cropped center-cropped-md" alt="OLOSA Class 2019">
+        <div class="parallax d-none d-md-block" v-if="!isFramed">
+            <img style="opacity: 0" src="2019-Jog-a-thon-students-med.jpg" class="center-cropped center-cropped-md" alt="OLOSA Class 2019">
         </div>
-        <section class="jumbotron border-0 bg-red text-white text-center mb-0" v-if="!isFramed">
+        <section class="bg-yellow rounded-0 text-center mb-0" v-if="!isFramed">
+            <div class="container" style="height:5px">
+            </div>
+        </section>
+        <section class="jumbotron rounded-0 border-0 bg-red text-white text-center mb-0" v-if="!isFramed">
             <div class="container">
                 <h1 class="jumbotron-heading">2019 Jog-A-Thon</h1>
                 <div class="row mt-5">
@@ -176,12 +189,12 @@
                 </div>
             </div>
         </section>
-        <section class="jumbotron bg-dark text-center mb-0" v-if="!isFramed">
-                <div class="container">
-                    <cmt-thermometer v-on:click.native="trackEvent('ProgressClick', $event)" v-bind:progress="progress.amount" v-bind:goal="progress.goal"></cmt-thermometer>
-                </div>
-            </section>
-        <div class="album pb-5">
+        <section class="jumbotron bg-blue rounded-0 text-center mb-0" v-if="!isFramed">
+            <div class="container">
+                <cmt-thermometer v-on:click.native="trackEvent('ProgressClick', $event)" v-bind:progress="progress.amount" v-bind:goal="progress.goal"></cmt-thermometer>
+            </div>
+        </section>
+        <div class="album bg-dark-blue py-5">
             <div class="container" id="search" ref="search">
                 <div class="row">
                     <div class="col-12 text-white">
@@ -272,7 +285,11 @@
 
             </div>
         </div>
-        <section class="text-white text-center mb-0">
+        <section class="bg-yellow rounded-0 text-center mb-0" v-if="!isFramed">
+            <div class="container" style="height:5px">
+            </div>
+        </section>
+        <section class="text-white text-center mt-5 mb-0">
             <div class="container" id="bottom" ref="bottom">
                 <div v-show="studentList && amountTotal && amountValid && studentListValid">
                     <p v-on:click="donateClick()">
