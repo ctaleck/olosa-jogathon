@@ -10,6 +10,15 @@ var app = new Vue({
             isDirty: false
         }
     },
+    mounted: function() {
+        // Auto-filter based on provided query
+        var urlParams = new URLSearchParams(window.location.search);
+        var q = urlParams.get('q');
+        if (q) {
+            this.query = q;
+            this.gotoSearch();
+        }
+    },
     methods: {
         reset: function () {
              if (appInsights) {
@@ -76,10 +85,14 @@ var app = new Vue({
             }
         },
         gotoSearch() {
-            this.$refs.search.scrollIntoView();
+            this.$nextTick(function() {
+                this.$refs.search.scrollIntoView();
+            });
         },
         gotoBottom() {
-            this.$refs.bottom.scrollIntoView();
+            this.$nextTick(function() {
+                this.$refs.bottom.scrollIntoView();
+            });
         }
     },
     computed: {

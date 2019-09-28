@@ -293,8 +293,8 @@
             <div class="container" id="bottom" ref="bottom">
                 <div v-show="studentList && amountTotal && amountValid && studentListValid">
                     <p v-on:click="donateClick()">
-                        <a v-bind:href="url" target="_blank" class="btn btn-lg btn-success my-2 mr-5">DONATE</a>
-                        <button type="button" class="btn btn-lg btn-outline-success" v-on:click="gotoSearch()">Search More</button>
+                        <a v-bind:href="url" target="_blank" class="btn btn-lg btn-success my-2">DONATE</a>
+                        <button type="button" class="btn btn-lg btn-outline-success ml-5" v-on:click="gotoSearch()">Search more</button>
                     </p>
                     <p>
                         You are making a one-time donation totaling ${{amountTotal.toLocaleString()}}. The amount

@@ -15,20 +15,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.css"
         integrity="sha256-CNwnGWPO03a1kOlAsGaH5g8P3dFaqFqqGFV/1nkX5OU=" crossorigin="anonymous" />
     <style>
-        .center-cropped {
-            object-fit: none;
-            object-position: center;
-            height: 299px;
-            width: 100%;
-        }
-        a {
-            color: #b81413;
-            text-decoration: none;
-        }
-        a:hover {
-            color: #b81413;
-            text-decoration: underline;
-        }
+
     </style>
     <!-- 
     To collect user behavior analytics about your application, 
@@ -49,32 +36,11 @@
 </head>
 
 <body>
-
-    <!-- App -->
-    <main id="app" role="main">
-
-        <section class="jumbotron bg-white text-center mb-0">
-            <div class="container">
-                <img src="OLOSA_logo.png" class="float-md-left" alt="Our Lady of Sorrows Academy logo">
-                <h1 class="jumbotron-heading">404</h1>
-                <h4 class="text-secondary">File not found</h4>
-                <p class="lead text-muted">
-                    Please go to <a href="https://jogathon.olosa.org">home</a>
-                </p>
-            </div>
-        </section>
-
-    </main>
-    <!-- End App -->
-    <footer class="text-muted">
-        <div class="container">
-            <p class="float-right">
-                <a href="#">Back to top</a>
-            </p>
-            <p><a href="https://ourladyofsorrows-academy.com/en">Our Lady of Sorrows Academy</a></p>
-        </div>
-    </footer>
-
+    <script>
+        var query = location.pathname.split('/')[1];
+        document.write('Going to https://jogathon.olosa.org for ' + query);    
+        location.href = 'https://jogathon.olosa.org/?q=' + query;
+    </script>
 </body>
 
 </html>

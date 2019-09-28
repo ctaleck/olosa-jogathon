@@ -1,22 +1,67 @@
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>Thank You | 2018 Jog-A-Thon | Our Lady of Sorrows Academy</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>2019 Jog-A-Thon | Our Lady of Sorrows Academy</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.css"
         integrity="sha256-CNwnGWPO03a1kOlAsGaH5g8P3dFaqFqqGFV/1nkX5OU=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="thermometer.component.css" />
+    <link href="https://fonts.googleapis.com/css?family=Contrail+One&display=swap" rel="stylesheet">
     <style>
+        .parallax { 
+            /* The image used */
+            background-image: url("2019-Jog-a-thon-students-med.jpg");
+
+            /* Set a specific height 
+            height: 500px; 
+*/
+            /* Create the parallax scrolling effect */
+            background-attachment: fixed;
+            background-position: top 57px center;
+            background-repeat: no-repeat;
+            background-size: 100% auto;
+        }
         .center-cropped {
             object-fit: none;
             object-position: center;
-            height: 299px;
+            height: 425px;
             width: 100%;
+        }
+        .bg-blue {
+            background-color: #094A8C;
+        }
+        .bg-dark-blue {
+            background-color: #06325F;
+        }
+        .bg-red {
+            background-color: #b81413;
+        }
+        .bg-yellow {
+            background-color: #FCEE6C;
+        }
+        a {
+            color: #b81413;
+            text-decoration: none;
+        }
+        a:hover {
+            color: #b81413;
+            text-decoration: underline;
+        }
+        .center-cropped-md {
+            object-fit: fill;
+            height: 100%;
+        }
+        h1, h2, h3, h4 {
+            font-family: 'Contrail One', cursive;
         }
     </style>
     <!-- 
@@ -27,63 +72,62 @@
     automatically in just a few seconds.
     -->
     <script type="text/javascript">
-        var appInsights=window.appInsights||function(a){
-          function b(a){c[a]=function(){var b=arguments;c.queue.push(function(){c[a].apply(c,b)})}}var c={config:a},d=document,e=window;setTimeout(function(){var b=d.createElement("script");b.src=a.url||"https://az416426.vo.msecnd.net/scripts/a/ai.0.js",d.getElementsByTagName("script")[0].parentNode.appendChild(b)});try{c.cookie=d.cookie}catch(a){}c.queue=[];for(var f=["Event","Exception","Metric","PageView","Trace","Dependency"];f.length;)b("track"+f.pop());if(b("setAuthenticatedUserContext"),b("clearAuthenticatedUserContext"),b("startTrackEvent"),b("stopTrackEvent"),b("startTrackPage"),b("stopTrackPage"),b("flush"),!a.disableExceptionTracking){f="onerror",b("_"+f);var g=e[f];e[f]=function(a,b,d,e,h){var i=g&&g(a,b,d,e,h);return!0!==i&&c["_"+f](a,b,d,e,h),i}}return c
-          }({
-              instrumentationKey:"cf979aaf-e12c-4ccc-ba21-8784b5395b62"
-          });
+        var appInsights = window.appInsights || function (a) {
+            function b(a) { c[a] = function () { var b = arguments; c.queue.push(function () { c[a].apply(c, b) }) } } var c = { config: a }, d = document, e = window; setTimeout(function () { var b = d.createElement("script"); b.src = a.url || "https://az416426.vo.msecnd.net/scripts/a/ai.0.js", d.getElementsByTagName("script")[0].parentNode.appendChild(b) }); try { c.cookie = d.cookie } catch (a) { } c.queue = []; for (var f = ["Event", "Exception", "Metric", "PageView", "Trace", "Dependency"]; f.length;)b("track" + f.pop()); if (b("setAuthenticatedUserContext"), b("clearAuthenticatedUserContext"), b("startTrackEvent"), b("stopTrackEvent"), b("startTrackPage"), b("stopTrackPage"), b("flush"), !a.disableExceptionTracking) { f = "onerror", b("_" + f); var g = e[f]; e[f] = function (a, b, d, e, h) { var i = g && g(a, b, d, e, h); return !0 !== i && c["_" + f](a, b, d, e, h), i } } return c
+        }({
+            instrumentationKey: "2beb8a98-f9eb-43bb-b54e-1d1eab3c95e0"
+        });
 
-        window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&appInsights.trackPageView();
+        window.appInsights = appInsights, appInsights.queue && 0 === appInsights.queue.length && appInsights.trackPageView();
     </script>
-
 </head>
-<body>
-    <header>
-        <div class="collapse bg-dark" id="navbarHeader">
+
+<body class="bg-blue">
+<!-- App -->
+<div id="app">
+    <header v-if="!isFramed">
+        <div class="collapse" id="navbarHeader">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-8 col-md-7 py-4">
                         <p class="text-muted">Thank you for your donation to</p>
                         <h4 class="text-white">Our Lady of Sorrows Academy</h4>
                         <p class="text-muted">
-                            Our Lady of Sorrows Academy is holding its Ninth Annual Jog-A-Thon on November 21, 2018,
-                            our major fundraiser for this Academic Year. Our goal is to raise $35,000 and we are
+                            Our Lady of Sorrows Academy is holding its Tenth Annual Jog-A-Thon on November 27, 2019,
+                            our major fundraiser for this Academic Year. Our goal is to raise $60,000 and we are
                             relying on your generous support and prayers to succeed!
                         </p>
                         <p class="text-muted">
-                            All proceeds from this year’s Jog-A-Thon will benefit the Academy, and will be used to
-                            fund, among other expenses, replacement of broken and outdated sports equipment, and
-                            replacement of broken air conditioning units in several classrooms.
+                            All proceeds from this year’s Jog-A-Thon will benefit the Academy.
                         </p>
                         <p class="text-muted">
-
                             In the weeks preceding the day of the Jog-A-Thon, students obtain sponsors to make a per
                             lap pledge or a one-time donation. On the day of the event, participants will have one hour
                             to run, jog, or walk as many times as they can around a one-eighth mile track.
                         </p>
                         <p class="text-muted">
-
                             Prizes will be awarded for students who run the most number of laps, as well as for
                             students who collect the most amount of money. Additional incentive prizes are awarded
                             throughout the campaign.
                         </p>
                         <p class="text-muted">
-
                             Please sponsor our students, teachers, and religious! Select the name(s) of who you are
                             graciously sponsoring, then enter the amount of your donation, your contact information and
                             payment information.
                         </p>
                         <p class="text-muted">
-
                             Thank you for supporting our school!
                         </p>
                         <p class="text-muted small">
-
                             Our Lady of Sorrows Academy is a K-12 private traditional Catholic school located in
                             Phoenix, Arizona. The Academy is a 501(c)(3) not-for-profit IRS tax exempt entity and
                             donations may be fully tax-deductible according to IRS charitable contributions guidelines.
                             All donations that meet IRS limits will be followed up with a letter of acknowledgement as
                             mandated by the IRS.
+                        </p>
+                        <p class="text-muted small">
+                            If you have problems using this Website, please contact the 
+                            <a href="mailto:webmaster@olosa.org">Jog-a-thon Webmaster</a>
                         </p>
                     </div>
                     <div class="col-sm-4 offset-md-1 py-4">
@@ -95,71 +139,58 @@
                 </div>
             </div>
         </div>
-        <div class="navbar navbar-dark bg-dark box-shadow">
+        <div class="navbar navbar-dark box-shadow">
             <div class="container d-flex justify-content-between">
                 <a href="#" class="navbar-brand d-flex align-items-center">
-                    <span class="oi oi-dashboard"></span>&nbsp;<strong>Fundraising Donations</strong>
+                    <span class="d-md-none"><strong>OLOSA</strong></span>
+                    <span class="d-none d-md-block"><strong>Our Lady of Sorrows Academy</strong></span>
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader"
-                    aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+                <button v-if="false" title="More about donations" class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="oi oi-caret-bottom"></span>
                 </button>
             </div>
         </div>
     </header>
 
-
-
-    <!-- App -->
-    <main id="app" role="main">
-        <div class="d-md-none">
-            <img src="olosa_fall_2018_mobile.jpg" class="center-cropped" alt="OLOSA Class 2018">
+    <main role="main">
+        <div class="d-md-none" v-if="!isFramed">
+            <img src="2019-Jog-a-thon-students-mobile.jpg" class="center-cropped" alt="OLOSA Class 2019">
         </div>
-        <div class="d-none d-md-block">
-            <img src="olosa_fall_2018_med.jpg" class="img-fluid mx-auto" alt="OLOSA Class 2018">
+        <div class="parallax d-none d-md-block" v-if="!isFramed">
+            <img style="opacity: 0" src="2019-Jog-a-thon-students-med.jpg" class="center-cropped center-cropped-md" alt="OLOSA Class 2019">
         </div>
-        <section class="jumbotron bg-white text-center">
-            <div class="container">
-                <img src="OLOSA_logo.png" class="float-md-left" alt="Our Lady of Sorrows Academy logo">
-                <h1 class="jumbotron-heading">2018 Jog-A-Thon</h1>
-                <h4 class="text-secondary">Our Lady of Sorrows Academy</h4>
-                <p class="lead text-muted">
-                    Thank you for your donation. 
-                </p>
-                <hr>
-                <div class="jumbotron-footer">
-                    <p class="img-fluid"><img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/cc-badges-ppmcvdam.png" alt="Donate now with PayPal" class="img-fluid" /></p>
-                </div>
+        <section class="bg-yellow rounded-0 text-center mb-0" v-if="!isFramed">
+            <div class="container" style="height:5px">
             </div>
         </section>
-
-        <div class="album py-5 bg-light">
-            <div class="container">
+        <div class="album bg-dark-blue py-5">
+            <div class="container" id="search" ref="search">
                 <div class="row">
-                    <div class="col-12">
-                        <p>Thank you for your donation. Your transaction has completed, and we are sending you an email containing the receipt for your payment.</p>
+                    <div class="col-12 text-white">
+                        <h1 class="text-center pb-5">Thank You</h1>
+                        <p>Thank you for your donation to the 2019 Jog-a-thon at Our Lady of Sorrows Acacemy.</p>
+                        <p>Your transaction has completed and PayPal will send you an email containing the receipt for your payment.</p>
                         <p>Please contact us if you have any questions about your donation. Thank you!</p>
                     </div>
                 </div>
-
-                <div class="row">
-
-                    <!--end row-->
-                </div>
             </div>
         </div>
-
+        <section class="bg-yellow rounded-0 text-center mb-0" v-if="!isFramed">
+            <div class="container" style="height:5px">
+            </div>
+        </section>
     </main>
-
-    <footer class="text-muted">
+    <!-- End App -->
+    <footer class="text-muted" v-if="!isFramed">
         <div class="container">
             <p class="float-right">
                 <a href="#">Back to top</a>
             </p>
-            <p>2018 &copy;</p>
+            <p><a href="https://ourladyofsorrows-academy.com/en">Our Lady of Sorrows Academy</a></p>
         </div>
     </footer>
-
+</div>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -169,10 +200,17 @@
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/TweenMax.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/plugins/TextPlugin.min.js"></script>
     <!-- development version, includes helpful console warnings -->
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
     <!-- production version, optimized for size and speed -->
-    <!--script src="https://cdn.jsdelivr.net/npm/vue"></script-->
-
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="./urls.js"></script>
+    <script src="./students.js"></script>
+    <script src="./progress.js"></script>
+    <script src="./thermometer.component.js"></script>
+    <script src="./index.js"></script>
 </body>
+
 </html>
