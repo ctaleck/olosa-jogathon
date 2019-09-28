@@ -76,7 +76,7 @@
 <body class="bg-dark">
 <!-- App -->
 <div id="app">
-    <header v-if="!isFramed">
+    <header v-if="!isFramed" style="background-color: #094A8C">
         <div class="collapse" id="navbarHeader">
             <div class="container">
                 <div class="row">
@@ -84,7 +84,7 @@
                         <p class="text-muted">Thank you for your donation to</p>
                         <h4 class="text-white">Our Lady of Sorrows Academy</h4>
                         <p class="text-muted">
-                            Our Lady of Sorrows Academy is holding its Ninth Annual Jog-A-Thon on November 27, 2019,
+                            Our Lady of Sorrows Academy is holding its Tenth Annual Jog-A-Thon on November 27, 2019,
                             our major fundraiser for this Academic Year. Our goal is to raise $60,000 and we are
                             relying on your generous support and prayers to succeed!
                         </p>
@@ -133,9 +133,10 @@
         <div class="navbar navbar-dark box-shadow">
             <div class="container d-flex justify-content-between">
                 <a href="#" class="navbar-brand d-flex align-items-center">
-                    <span class="oi oi-dashboard"></span>&nbsp;<strong>OLOSA Fundraising</strong>
+                    <span class="d-md-none"><strong>OLOSA</strong></span>
+                    <span class="d-none d-md-block"><strong>Our Lady of Sorrows Academy</strong></span>
                 </a>
-                <button title="More about donations" class="navbar-toggler" type="button" data-toggle="collapse"
+                <button v-if="false" title="More about donations" class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="oi oi-caret-bottom"></span>
                 </button>
