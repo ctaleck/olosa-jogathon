@@ -16,19 +16,6 @@
         integrity="sha256-CNwnGWPO03a1kOlAsGaH5g8P3dFaqFqqGFV/1nkX5OU=" crossorigin="anonymous" />
     <link href="https://fonts.googleapis.com/css?family=Contrail+One&display=swap" rel="stylesheet">
     <style>
-        .parallax { 
-            /* The image used */
-            background-image: url("2019-Jog-a-thon-students-med.jpg");
-
-            /* Set a specific height 
-            height: 500px; 
-*/
-            /* Create the parallax scrolling effect */
-            background-attachment: fixed;
-            background-position: top 57px center;
-            background-repeat: no-repeat;
-            background-size: 100% auto;
-        }
         .center-cropped {
             object-fit: none;
             object-position: center;
@@ -118,52 +105,80 @@
                             <div class="col-12">
                                 <form>
                                     <div class="form-group">
-                                        <label for="form-preview">Preview</label>
+                                        <label for="form-preview">Email preview</label>
                                         <input v-model="preview" type="text" class="form-control" id="form-preview" required min="30" max="130">
+                                        <small id="passwordHelpBlock" class="form-text text-muted">
+                                            Appears only on Email client's preview panel.
+                                        </small>
                                     </div>
                                     <div class="form-check">
                                         <input v-model="showHero" type="checkbox" class="form-check-input" id="form-show-image">
-                                        <label class="form-check-label" for="form-show-image">Show image</label>
+                                        <label class="form-check-label" for="form-show-image">Show main image</label>
+                                        <small id="passwordHelpBlock" class="form-text text-muted">
+                                            Appears as main image above letter.
+                                        </small>
                                     </div>
                                     <div class="form-group" v-if="showHero">
                                         <label for="form-image">Image URL</label>
                                         <input v-model="image" type="text" class="form-control" id="form-image">
                                     </div>
                                     <div class="form-group">
-                                        <label for="form-title">Title</label>
+                                        <label for="form-title">Email title</label>
                                         <input v-model="title" type="text" class="form-control" id="form-title" required>
+                                        <small id="passwordHelpBlock" class="form-text text-muted">
+                                            Appears only on Email client's title bar.
+                                        </small>
                                     </div>
                                     <div class="form-group">
-                                        <label for="form-header1">Header 1</label>
+                                        <label for="form-header1">Main header</label>
                                         <input v-model="header1" type="text" class="form-control" id="form-header1" required>
+                                        <small id="passwordHelpBlock" class="form-text text-muted">
+                                            Appears as main header inside email.
+                                        </small>
                                     </div>
                                     <div class="form-group">
-                                        <label for="form-body">Body 1</label>
+                                        <label for="form-body">Main body</label>
                                         <textarea v-model="body1" class="form-control" id="form-body" rows="10" required></textarea>
+                                        <small id="passwordHelpBlock" class="form-text text-muted">
+                                            Appears after main header. Use a single [ENTER] for new paragraphs. Use HTML formatting codes.
+                                        </small>
                                     </div>
                                     <div class="form-check">
                                         <input v-model="showAction" type="checkbox" class="form-check-input" id="form-show-action">
                                         <label class="form-check-label" for="form-show-action">Show action button</label>
+                                        <small id="passwordHelpBlock" class="form-text text-muted">
+                                            Appears after body 1.
+                                        </small>
                                     </div>
-                                    <div class="form-check">
-                                        <input v-model="showArticle1Detail" type="checkbox" class="form-check-input" id="form-show-article1-detail">
-                                        <label class="form-check-label" for="form-show-article1-detail">Show article 1 detail</label>
+                                    <div class="disabled" v-if="false">
+                                        <div class="form-check">
+                                            <input v-model="showArticle1Detail" type="checkbox" class="form-check-input" id="form-show-article1-detail">
+                                            <label class="form-check-label" for="form-show-article1-detail">Show article 1 detail</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input v-model="showArticle2" type="checkbox" class="form-check-input" id="form-show-image">
+                                            <label class="form-check-label" for="form-show-image">Show article 2</label>
+                                        </div>
+                                        <div class="form-group" v-if="showArticle2">
+                                            <label for="form-header2">Header 2</label>
+                                            <input v-model="header2" type="text" class="form-control" id="form-header2">
+                                        </div>
+                                        <div class="form-group" v-if="showArticle2">
+                                            <label for="form-body2">Body 2</label>
+                                            <textarea v-model="body2" class="form-control" id="form-body" rows="10"></textarea>
+                                        </div>
                                     </div>
-                                    <div class="form-check">
-                                        <input v-model="showArticle2" type="checkbox" class="form-check-input" id="form-show-image">
-                                        <label class="form-check-label" for="form-show-image">Show article 2</label>
+                                    <div class="form-inline">
+                                        <button v-on:click.prevent="generate()" type="submit" class="btn btn-primary form-control mr-3">
+                                            <span class="oi oi-check"></span>&nbsp;Generate
+                                        </button>
+                                        <button v-on:click.prevent="show()" type="submit" class="btn btn-primary form-control mr-3">
+                                            <span class="oi oi-eye"></span>&nbsp;Show to copy
+                                        </button>
+                                        <a v-on:click.prevent="reset()" class="btn btn-link form-control mr-3">
+                                            <span class="oi oi-refresh"></span>&nbsp;Reset
+                                        </a>
                                     </div>
-                                    <div class="form-group" v-if="showArticle2">
-                                        <label for="form-header2">Header 2</label>
-                                        <input v-model="header2" type="text" class="form-control" id="form-header2">
-                                    </div>
-                                    <div class="form-group" v-if="showArticle2">
-                                        <label for="form-body2">Body 2</label>
-                                        <textarea v-model="body2" class="form-control" id="form-body" rows="10"></textarea>
-                                    </div>
-                                    <button v-on:click.prevent="done()" type="submit" class="btn btn-outline-secondary input-group-text">
-                                        <span class="oi oi-check"></span>&nbsp;Done
-                                    </button>
                                 </form>
                             </div>
         

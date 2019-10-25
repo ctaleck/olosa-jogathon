@@ -10,8 +10,9 @@ var app = new Vue({
     el: '#app',
     data: function() {
         return {
+            frame: document.querySelector('[name=template]'),
             showHero: true,
-            image: 'http://',
+            image: 'https://ourladyofsorrows-academy.com/sites/sspx/files/media/usa-s-phoenix/miscellaneous/2019-olosa-students-email.jpg',
             preview: '',
             title: '',
             header1: '',
@@ -26,15 +27,21 @@ var app = new Vue({
     mounted: function() {
     },
     methods: {
-        done: function() {
+        reset: function() {
             var frame = document.querySelector('[name=template]')
             frame.contentWindow.location.reload();
-            Vue.nextTick(function() {
-                this.refresh();
-            },this);
         },
-        refresh: function() {
-            var t = window.frames['template'].document;
+        show: function () {
+            var iframeBody = document.querySelector('[name=template]').contentDocument;
+            head = iframeBody['head'].innerHTML;
+            body = iframeBody['body'].innerHTML;
+            document.body.innerHTML = body;
+            document.head.innerHTML = head;
+        },
+        generate: function() {
+            var frame = document.querySelector('[name=template]')
+            var t = frame.contentWindow.document;
+
             t.querySelector('title').innerHTML = this.title;
             t.getElementById('preview').innerHTML = this.preview;
         
@@ -44,7 +51,7 @@ var app = new Vue({
             t.getElementById('header1').innerHTML = this.header1;
             t.getElementById('body1').innerHTML = '';
             if (this.body1) {
-                this.body1.split('\n').forEach(element => {
+                this.body1.split('\n').forEach(function(element) {
                     createPara(t.getElementById('body1'), element);
                 });
             }
