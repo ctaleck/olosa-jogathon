@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- See https://tedgoas.github.io/Cerberus/ -->
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 <head>
     <meta charset="utf-8"> <!-- utf-8 works for most cases -->
@@ -219,7 +218,7 @@
     <![endif]-->
 
         <!-- Visually Hidden Preheader Text : BEGIN -->
-        <div style="display: none; font-size: 1px; line-height: 1px; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; font-family: sans-serif;">
+        <div id="preview" style="display: none; font-size: 1px; line-height: 1px; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; font-family: sans-serif;">
             (Optional) This text will appear in the inbox preview, but not the email body. It can be used to supplement the email subject line or even summarize the email's contents. Extended text preheaders (~490 characters) seems like a better UX for anyone using a screenreader or voice-command apps like Siri to dictate the contents of an email. If this text is not included, email clients will automatically populate it using the text (including image alt text) at the start of the email's body.
         </div>
         <!-- Visually Hidden Preheader Text : END -->
@@ -254,9 +253,9 @@
 		        <!-- Email Header : END -->
 
                 <!-- Hero Image, Flush : BEGIN -->
-                <tr>
+                <tr id="hero">
                     <td style="background-color: #ffffff;">
-                        <img src="https://via.placeholder.com/1200x600" width="600" height="" alt="alt_text" border="0" style="width: 100%; max-width: 600px; height: auto; background: #dddddd; font-family: sans-serif; font-size: 15px; line-height: 15px; color: #555555; margin: auto; display: block;" class="g-img">
+                        <img src="https://ourladyofsorrows-academy.com/sites/sspx/files/media/usa-s-phoenix/miscellaneous/2019-olosa-students-email.jpg" width="600" height="" alt="alt_text" border="0" style="width: 100%; max-width: 600px; height: auto; background: #dddddd; font-family: sans-serif; font-size: 15px; line-height: 15px; color: #555555; margin: auto; display: block;" class="g-img">
                     </td>
                 </tr>
                 <!-- Hero Image, Flush : END -->
@@ -267,12 +266,15 @@
                         <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                             <tr>
                                 <td style="padding: 20px; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555;">
-                                    <h1 style="margin: 0 0 10px 0; font-family: sans-serif; font-size: 25px; line-height: 30px; color: #333333; font-weight: normal;">Principal's Newsletter</h1>
-                                    <p style="margin: 0;">Maecenas sed ante pellentesque, posuere leo id, eleifend dolor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent laoreet malesuada cursus. Maecenas scelerisque congue eros eu posuere. Praesent in felis ut velit pretium lobortis rhoncus ut&nbsp;erat.</p>
+                                    <h1 id="header1" style="margin: 0 0 10px 0; font-family: sans-serif; font-size: 25px; line-height: 30px; color: #333333; font-weight: normal;">Article 1</h1>
+                                    <div id="body1">
+                                        <p style="margin: 0;">Maecenas sed ante pellentesque, posuere leo id, eleifend dolor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent laoreet malesuada cursus. Maecenas scelerisque congue eros eu posuere. Praesent in felis ut velit pretium lobortis rhoncus ut&nbsp;erat.</p>
+                                        <p style="margin: 0;">Maecenas sed ante pellentesque, posuere leo id, eleifend dolor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent laoreet malesuada cursus. Maecenas scelerisque congue eros eu posuere. Praesent in felis ut velit pretium lobortis rhoncus ut&nbsp;erat.</p>
+                                    </div>
                                 </td>
                             </tr>
-                            <tr>
-                                <td style="padding: 0 20px;">
+                            <tr id="action">
+                                <td style="padding: 20px;">
                                     <!-- Button : BEGIN -->
                                     <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin: auto;">
                                         <tr>
@@ -284,7 +286,7 @@
                                     <!-- Button : END -->
                                 </td>
                             </tr>
-                            <tr>
+                            <tr id="article1detail">
                                 <td style="padding: 20px; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555;">
                                     <h2 style="margin: 0 0 10px 0; font-family: sans-serif; font-size: 18px; line-height: 22px; color: #333333; font-weight: bold;">Praesent in felis ut velit pretium lobortis rhoncus ut&nbsp;erat.</h2>
                                     <ul style="padding: 0; margin: 0 0 10px 0; list-style-type: disc;">
@@ -301,7 +303,7 @@
                 <!-- 1 Column Text + Button : END -->
 
                 <!-- 2 Even Columns : BEGIN -->
-                <tr>
+                <tr id="article2column">
                     <td style="padding: 0 10px 40px 10px; background-color: #ffffff;">
                         <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
                             <tr>
@@ -340,7 +342,7 @@
                 <!-- Two Even Columns : END -->
 
                 <!-- Clear Spacer : BEGIN -->
-                <tr>
+                <tr id="article2spacer">
                     <td aria-hidden="true" height="40" style="font-size: 0px; line-height: 0px;">
                         &nbsp;
                     </td>
@@ -348,12 +350,15 @@
                 <!-- Clear Spacer : END -->
 
                 <!-- 1 Column Text : BEGIN -->
-                <tr>
+                <tr id="article2">
                     <td style="background-color: #ffffff;">
                         <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                             <tr>
                                 <td style="padding: 20px; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555;">
-                                    <p style="margin: 0;">Maecenas sed ante pellentesque, posuere leo id, eleifend dolor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent laoreet malesuada cursus. Maecenas scelerisque congue eros eu posuere. Praesent in felis ut velit pretium lobortis rhoncus ut&nbsp;erat.</p>
+                                    <h1 id="header2" style="margin: 0 0 10px 0; font-family: sans-serif; font-size: 25px; line-height: 30px; color: #333333; font-weight: normal;">Article 2</h1>
+                                    <div id="body2">
+                                        <p style="margin: 0;">Maecenas sed ante pellentesque, posuere leo id, eleifend dolor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent laoreet malesuada cursus. Maecenas scelerisque congue eros eu posuere. Praesent in felis ut velit pretium lobortis rhoncus ut&nbsp;erat.</p>
+                                    </div>
                                 </td>
                             </tr>
                         </table>
@@ -398,7 +403,7 @@
                         <![endif]-->
                         <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                             <tr>
-                                <td style="padding: 20px; text-align: left; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #ffffff;">
+                                <td style="padding: 20px; text-align: left; font-family: sans-serif; font-size: 10px; line-height: 20px; color: #1468bd;">
                                     <p style="margin: 0;">
                                         Our Lady of Sorrows Academy is a K-12 private traditional Catholic school located in
                                         Phoenix, Arizona. The Academy is a 501(c)(3) not-for-profit IRS tax exempt entity and

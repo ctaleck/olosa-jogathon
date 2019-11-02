@@ -18,6 +18,8 @@ var app = new Vue({
             header1: '',
             body1: '',
             showAction: true,
+            actionLabel: "Donate",
+            actionUrl: "https://jogathon.olosa.org/",
             showArticle1Detail: false,
             showArticle2: false,
             header2: '',
@@ -55,6 +57,9 @@ var app = new Vue({
                     createPara(t.getElementById('body1'), element);
                 });
             }
+
+            t.getElementById('actionLink').innerHTML = this.actionLabel;
+            t.getElementById('actionLink').href = this.actionUrl;
         
             if (!this.showAction) {
                 t.getElementById('action').innerHTML='';
