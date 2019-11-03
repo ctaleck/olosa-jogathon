@@ -1,7 +1,6 @@
 var createPara = function(currentDiv, element) {
     var newDiv = document.createElement("p"); 
-    var newContent = document.createTextNode(element); 
-    newDiv.appendChild(newContent);  
+    newDiv.innerHTML = element;
     currentDiv.appendChild(newDiv); 
 };
 
