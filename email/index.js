@@ -1,13 +1,13 @@
-var createPara = function(currentDiv, element) {
-    var newDiv = document.createElement("p"); 
+var createPara = function (currentDiv, element) {
+    var newDiv = document.createElement("p");
     newDiv.innerHTML = element;
-    currentDiv.appendChild(newDiv); 
+    currentDiv.appendChild(newDiv);
 };
 
 // Email app
 var app = new Vue({
     el: '#app',
-    data: function() {
+    data: function () {
         return {
             frame: document.querySelector('[name=template]'),
             showHero: true,
@@ -25,10 +25,10 @@ var app = new Vue({
             body2: ''
         }
     },
-    mounted: function() {
+    mounted: function () {
     },
     methods: {
-        reset: function() {
+        reset: function () {
             var frame = document.querySelector('[name=template]')
             frame.contentWindow.location.reload();
         },
@@ -39,40 +39,43 @@ var app = new Vue({
             document.body.innerHTML = body;
             document.head.innerHTML = head;
         },
-        generate: function() {
+        generate: function () {
             var frame = document.querySelector('[name=template]')
             var t = frame.contentWindow.document;
 
             t.querySelector('title').innerHTML = this.title;
             t.getElementById('preview').innerHTML = this.preview;
-        
+
             if (!this.showHero) {
-                t.getElementById('hero').innerHTML = ''; 
+                t.getElementById('hero').innerHTML = '';
             }
             t.getElementById('header1').innerHTML = this.header1;
             t.getElementById('body1').innerHTML = '';
             if (this.body1) {
-                this.body1.split('\n').forEach(function(element) {
+                this.body1.split('\n').forEach(function (element) {
                     createPara(t.getElementById('body1'), element);
                 });
             }
 
-            t.getElementById('actionLink').innerHTML = this.actionLabel;
-            t.getElementById('actionLink').href = this.actionUrl;
-        
             if (!this.showAction) {
-                t.getElementById('action').innerHTML='';
+                t.getElementById('action').innerHTML = '';
             }
-        
+            else {
+                t.getElementById('actionLink').innerHTML = this.actionLabel;
+                t.getElementById('actionLink').href = this.actionUrl;
+            }
+
             if (!this.showArticle1Detail) {
-                t.getElementById('article1detail').innerHTML='';
+                t.getElementById('article1detail').innerHTML = '';
             }
-        
-            t.getElementById('article2column').innerHTML='';
-        
-            if (!this.showArticle2) {
-                t.getElementById('article2spacer').innerHTML='';
-                t.getElementById('article2').innerHTML='';
+            else {
+
+                t.getElementById('article2column').innerHTML = '';
+
+                if (!this.showArticle2) {
+                    t.getElementById('article2spacer').innerHTML = '';
+                    t.getElementById('article2').innerHTML = '';
+                }
             }
         }
     },
