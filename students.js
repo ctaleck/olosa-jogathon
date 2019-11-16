@@ -1021,6 +1021,26 @@ var students = [
   },
   {
     "title": "",
+    "firstname": "Brother",
+    "lastname": "Alphonsus",
+    "grade": "Faculty",
+    "selected": false,
+    "image": null,
+    "amount": null,
+    "order": 1400
+  },
+  {
+    "title": "",
+    "firstname": "Brother",
+    "lastname": "Dismas",
+    "grade": "Faculty",
+    "selected": false,
+    "image": null,
+    "amount": null,
+    "order": 1500
+  },
+  {
+    "title": "",
     "firstname": "General",
     "lastname": "Donation",
     "grade": "Faculty",
