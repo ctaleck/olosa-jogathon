@@ -84,12 +84,12 @@ var app = new Vue({
                   );
             }
         },
-        gotoSearch() {
+        gotoSearch: function () {
             this.$nextTick(function() {
                 this.$refs.search.scrollIntoView();
             });
         },
-        gotoBottom() {
+        gotoBottom: function () {
             this.$nextTick(function() {
                 this.$refs.bottom.scrollIntoView();
             });
