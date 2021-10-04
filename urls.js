@@ -1,16 +1,21 @@
+// Possible values
 var sandbox = 'https://www.sandbox.paypal.com/cgi-bin/webscr';
 var prod = 'https://www.paypal.com/cgi-bin/webscr';
-var item = 'OLOS+Academy+2019+Jog-A-Thon';
 var emailSchool = 'treasurer@olosa.org';
-var email = 'ourladyofsorrows@sspx.org';
+var emailChurch = 'ourladyofsorrows@sspx.org';
 var emailSandbox = 'chris-facilitator@taleck.com';
 var href = [
-    'https://www.paypal.com/verified/pal=', email
+    'https://www.paypal.com/verified/pal=', emailChurch
 ].join('');
 
+// Calucated cart item with current year
+var year = new Date().getFullYear().toString();
+var item = year + '+Jog-A-Thon';
+
+// URL config object
 var urls = {
     paypalBase: prod,
-    paypalEmail: email,
+    paypalEmail: emailSchool,
     paypalItem: item,
     paypalEmailVerifyHref: null
 };
