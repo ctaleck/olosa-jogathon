@@ -211,7 +211,7 @@ var students = [
  },
  {
    "title": "",
-   "firstname": "Lucyiana",
+   "firstname": "Luciana",
    "lastname": "Stenberg",
    "grade": "1st Grade",
    "selected": false,
