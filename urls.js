@@ -8,10 +8,14 @@ var href = [
     'https://www.paypal.com/verified/pal=', emailChurch
 ].join('');
 
-// Calucated cart item with current year
+// Calculated cart item with current year
 var year = new Date().getFullYear().toString();
 var item = year + '+Jog-A-Thon';
 
+// Main config object
+var config = {
+    instrumentationKey: "2beb8a98-f9eb-43bb-b54e-1d1eab3c95e0" // Azure Application Insights
+};
 // URL config object
 var urls = {
     paypalBase: prod,
