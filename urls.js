@@ -8,10 +8,9 @@ var href = [
     'https://www.paypal.com/verified/pal=', emailChurch
 ].join('');
 
-// Calucated cart item with current year
+// Calculated cart item with current year
 var year = new Date().getFullYear().toString();
 var item = year + '+Jog-A-Thon';
-
 // URL config object
 var urls = {
     paypalBase: prod,

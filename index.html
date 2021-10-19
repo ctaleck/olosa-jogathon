@@ -195,7 +195,7 @@
             </div>
             <div class="container">
                 <p>
-                    <a href="newsletter.pdf" target="_blank" class="btn btn-lg btn-info my-2">View Current Week's Newsletter</a>
+                    <a v-on:click.native="trackEvent('NewsletterClick', $event)" href="newsletter.pdf" target="_blank" class="btn btn-lg btn-info my-2">View Current Week's Newsletter</a>
                 </p>
             </div>
         </section>
