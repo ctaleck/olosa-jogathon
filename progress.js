@@ -1,4 +1,4 @@
 var progress = {
-    amount: 48467, // week 6 (min 2000 to show number inside)
+    amount: 55162, // week 7 (min 2000 to show number inside)
     goal: 75000
 };
